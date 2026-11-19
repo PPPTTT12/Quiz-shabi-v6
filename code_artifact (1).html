@@ -1,0 +1,2401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>当代人类迷惑行为自查表</title>
+  <meta name="description" content="24 题测出你的隐藏社交反派成分与人性底线">
+  <meta property="og:title" content="当代人类迷惑行为自查表">
+  <meta property="og:description" content="24 题测出你的隐藏社交反派成分与人性底线">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --ink: #111111;
+      --muted: #555555;
+      --hg: #E5484D;
+      --rd: #7C3AED;
+      --sb: #F5A623;
+      --sg: #22A06B;
+      --yellow: #FFF3B0;
+      --border: 3px solid #111111;
+      --shadow: 4px 4px 0 #111111;
+      --shadow-sm: 2px 2px 0 #111111;
+      --radius: 12px;
+      --font-display: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Heiti SC", sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      background-image: radial-gradient(#E5E7EB 1.4px, transparent 1.4px);
+      background-size: 18px 18px;
+      color: var(--ink);
+      font-family: var(--font-body);
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    .app-shell {
+      max-width: 440px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      padding: 14px 14px 18px;
+    }
+
+    .view { display: none; flex-direction: column; flex: 1; }
+    .view.active { display: flex; }
+
+    .sticker-card {
+      background: #FFFFFF;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .btn {
+      appearance: none;
+      font-family: inherit;
+      font-weight: 800;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.12s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--ink);
+      background: #FFFFFF;
+      user-select: none;
+    }
+    .btn:active:not(:disabled) {
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 0 #111111;
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    .btn-primary {
+      background: #FFDE59;
+      color: #111111;
+      font-size: 17px;
+      padding: 14px 18px;
+      width: 100%;
+    }
+    .btn-sm {
+      font-size: 13px;
+      padding: 8px 12px;
+      border-width: 2.5px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border: 2px solid #111111;
+      border-radius: 999px;
+      background: #FFFFFF;
+      box-shadow: 2px 2px 0 #111111;
+    }
+
+    /* HOME VIEW */
+    #view-home {
+      justify-content: center;
+    }
+    .hero-box {
+      padding: 22px 16px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-badge-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin: 0 0 8px;
+      letter-spacing: -0.5px;
+    }
+    .hero-title span {
+      display: inline-block;
+      background: #FFDE59;
+      padding: 0 6px;
+      border: 2.5px solid #111111;
+      border-radius: 6px;
+      transform: rotate(-2deg);
+    }
+    .hero-sub {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin: 0 0 14px;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+    .pixel-parade {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 12px 0 18px;
+    }
+    .pixel-chip {
+      width: 64px;
+      height: 64px;
+      border: 2.5px solid #111111;
+      border-radius: 10px;
+      box-shadow: 3px 3px 0 #111111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+    .pixel-chip svg {
+      width: 56px;
+      height: 56px;
+      image-rendering: pixelated;
+    }
+
+    .mode-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .mode-btn {
+      padding: 9px 8px;
+      font-size: 13px;
+      font-weight: 800;
+      border: 2.5px solid #111111;
+      border-radius: 10px;
+      background: #F8FAFC;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    .mode-btn.active {
+      background: #111111;
+      color: #FFFFFF;
+      box-shadow: 2px 2px 0 #FFDE59;
+    }
+
+    .proxy-input-wrap {
+      display: none;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .proxy-input-wrap.show { display: block; }
+    .proxy-input {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 2.5px solid #111111;
+      border-radius: 8px;
+      outline: none;
+      background: #FFFDF5;
+    }
+    .proxy-input:focus { border-color: var(--rd); }
+
+    .hero-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .hero-meta-item {
+      border: 2px solid #111111;
+      border-radius: 8px;
+      padding: 7px 4px;
+      background: #FAFAFA;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .hero-meta-item strong {
+      display: block;
+      font-size: 14.5px;
+      font-weight: 900;
+    }
+
+    /* Gallery (at bottom of RESULT view) */
+    .gallery-section {
+      margin-top: 16px;
+      padding: 14px;
+    }
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 900;
+    }
+    .fam-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .fam-tab {
+      border: 2px solid #111111;
+      border-radius: 8px;
+      padding: 6px 2px;
+      font-size: 11.5px;
+      font-weight: 800;
+      background: #FFFFFF;
+      cursor: pointer;
+      text-align: center;
+    }
+    .fam-tab.active {
+      color: #FFFFFF;
+      box-shadow: 2px 2px 0 #111111;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .gallery-item {
+      border: 2px solid #111111;
+      border-radius: 10px;
+      padding: 8px;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .gallery-avatar {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border: 2px solid #111111;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .gallery-avatar svg { width: 38px; height: 38px; image-rendering: pixelated; }
+    .gallery-info h3 {
+      margin: 0 0 2px;
+      font-size: 12.5px;
+      font-weight: 900;
+    }
+    .gallery-info p {
+      margin: 0;
+      font-size: 10.5px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    .disclaimer {
+      text-align: center;
+      font-size: 11px;
+      color: #777777;
+      margin-top: 14px;
+      font-weight: 600;
+    }
+
+    /* QUIZ VIEW */
+    #view-quiz {
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .quiz-top {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quiz-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .act-pill {
+      font-size: 12px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border: 2.5px solid #111111;
+      border-radius: 999px;
+      color: #FFFFFF;
+      background: #111111;
+      box-shadow: 2px 2px 0 #111111;
+    }
+    .q-counter {
+      font-size: 14px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      background: #FFDE59;
+      padding: 3px 9px;
+      border: 2px solid #111111;
+      border-radius: 8px;
+    }
+    .progress-track {
+      height: 10px;
+      background: #F1F5F9;
+      border: 2.5px solid #111111;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #111111;
+      transition: width 0.2s ease, background-color 0.2s ease;
+    }
+
+    .question-box {
+      padding: 18px 16px;
+      background: #FFFFFF;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+    .question-box.inferno-q {
+      background: #18181B;
+      color: #FFFFFF;
+      box-shadow: 4px 4px 0 #E5484D;
+    }
+    .question-box.inferno-q .q-scene-tag {
+      background: #E5484D;
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+    }
+    .question-box.inferno-q .question-text {
+      color: #FFFFFF;
+    }
+    .q-scene-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      color: #555555;
+      background: #F3F4F6;
+      border: 1.5px solid #111111;
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+    }
+    .question-text {
+      margin: 0;
+      font-size: 17.5px;
+      font-weight: 900;
+      line-height: 1.48;
+      color: #111111;
+    }
+
+    /* MBTI 5-POINT LIKERT SCALE (Act 1 & Act 2) */
+    .likert-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      padding: 8px 4px;
+    }
+    .likert-ends {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 900;
+      padding: 0 2px;
+    }
+    .likert-end-left { color: #DC2626; }
+    .likert-end-right { color: #16A34A; }
+    .likert-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .likert-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      flex: 1;
+    }
+    .likert-dot {
+      appearance: none;
+      border: 3px solid #111111;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      font-weight: 900;
+      font-size: 14px;
+      box-shadow: 3px 3px 0 #111111;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.12s ease;
+    }
+    .likert-dot:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #111111;
+    }
+    .likert-dot.v-neg2 { width: 58px; height: 58px; background: #FEE2E2; color: #991B1B; }
+    .likert-dot.v-neg1 { width: 48px; height: 48px; background: #FEF2F2; color: #B91C1C; }
+    .likert-dot.v-zero { width: 42px; height: 42px; background: #FAFAFA; color: #666666; border-style: dashed; box-shadow: none; }
+    .likert-dot.v-pos1 { width: 48px; height: 48px; background: #ECFDF5; color: #15803D; }
+    .likert-dot.v-pos2 { width: 58px; height: 58px; background: #DCFCE7; color: #166534; }
+
+    .likert-dot.selected.v-neg2 { background: #E5484D; color: #FFFFFF; transform: translate(2px, 2px); box-shadow: 1px 1px 0 #111111; }
+    .likert-dot.selected.v-neg1 { background: #F87171; color: #FFFFFF; transform: translate(2px, 2px); box-shadow: 1px 1px 0 #111111; }
+    .likert-dot.selected.v-zero { background: #6B7280; color: #FFFFFF; border-style: solid; }
+    .likert-dot.selected.v-pos1 { background: #34D399; color: #111111; transform: translate(2px, 2px); box-shadow: 1px 1px 0 #111111; }
+    .likert-dot.selected.v-pos2 { background: #22A06B; color: #FFFFFF; transform: translate(2px, 2px); box-shadow: 1px 1px 0 #111111; }
+
+    .likert-sublabel {
+      font-size: 11px;
+      font-weight: 800;
+      color: #555555;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .likert-hint {
+      text-align: center;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #777777;
+      background: #FAFAFA;
+      border: 1.5px dashed #CBD5E1;
+      border-radius: 8px;
+      padding: 6px 10px;
+    }
+
+    /* ACT 3 FOUR-CHOICE DILEMMA OPTIONS */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      justify-content: center;
+    }
+    .opt-btn {
+      width: 100%;
+      text-align: left;
+      padding: 11px 12px;
+      border: 2.5px solid #111111;
+      border-radius: 10px;
+      background: #FFFFFF;
+      box-shadow: 3px 3px 0 #111111;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #111111;
+      transition: transform 0.08s, box-shadow 0.08s, background-color 0.1s;
+    }
+    .opt-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #111111;
+    }
+    .opt-btn.selected {
+      background: #FFDE59;
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #111111;
+    }
+    .opt-key {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      border: 2px solid #111111;
+      border-radius: 6px;
+      background: #F3F4F6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .opt-btn.selected .opt-key {
+      background: #111111;
+      color: #FFFFFF;
+    }
+    .opt-btn.opt-escape {
+      border-style: dashed;
+      border-color: #666666;
+      background: #FAFAFA;
+      box-shadow: none;
+      color: #555555;
+      padding: 9px 12px;
+    }
+    .opt-btn.opt-escape .opt-key {
+      border-color: #666666;
+      background: #FFFFFF;
+      color: #666666;
+    }
+    .opt-btn.opt-escape.selected {
+      border-style: solid;
+      border-color: #111111;
+      background: #E5E7EB;
+      color: #111111;
+    }
+
+    .quiz-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 2px;
+    }
+
+    /* TRANSITION VIEW */
+    #view-transition {
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0;
+    }
+    .trans-card {
+      width: 100%;
+      padding: 24px 18px;
+      text-align: center;
+    }
+    .trans-card.inferno {
+      background: #111111;
+      color: #FFFFFF;
+      border-color: #111111;
+      box-shadow: 5px 5px 0 #E5484D;
+    }
+    .trans-icon {
+      font-size: 42px;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    .trans-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border: 2px solid #111111;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      background: #FFDE59;
+      color: #111111;
+    }
+    .trans-title {
+      font-size: 21px;
+      font-weight: 900;
+      margin: 0 0 10px;
+      line-height: 1.35;
+    }
+    .trans-desc {
+      font-size: 14px;
+      line-height: 1.55;
+      margin: 0 0 18px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    .trans-bars {
+      text-align: left;
+      background: #FAFAFA;
+      border: 2px solid #111111;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      color: #111111;
+    }
+    .mini-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .mini-bar-row:last-child { margin-bottom: 0; }
+    .mini-bar-label { width: 78px; flex-shrink: 0; }
+    .mini-bar-track {
+      flex: 1;
+      height: 10px;
+      background: #E5E7EB;
+      border: 1.5px solid #111111;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .mini-bar-fill { height: 100%; }
+    .mini-bar-pct { width: 34px; text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* Bipolar 4D trait bars on Result */
+    .trait-row {
+      margin-bottom: 7px;
+    }
+    .trait-row:last-child { margin-bottom: 0; }
+    .trait-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+    .trait-track {
+      height: 8px;
+      background: #E5E7EB;
+      border: 1.5px solid #111111;
+      border-radius: 999px;
+      position: relative;
+      overflow: hidden;
+    }
+    .trait-fill {
+      height: 100%;
+      background: #111111;
+      border-radius: 999px;
+    }
+
+    /* RESULT VIEW */
+    .poster-card {
+      background: #FFFFFF;
+      border: 3px solid #111111;
+      box-shadow: 5px 5px 0 #111111;
+      border-radius: 14px;
+      padding: 16px 15px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .poster-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2.5px dashed #111111;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      gap: 8px;
+    }
+    .case-meta {
+      font-size: 11px;
+      font-weight: 800;
+      color: #444444;
+      line-height: 1.4;
+    }
+    .case-title-small {
+      font-size: 13px;
+      font-weight: 900;
+      color: #111111;
+    }
+    .toxicity-stamp {
+      border: 2.5px solid #111111;
+      border-radius: 8px;
+      padding: 4px 9px;
+      font-size: 11.5px;
+      font-weight: 900;
+      transform: rotate(5deg);
+      box-shadow: 2px 2px 0 #111111;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .stamp-lv1 { background: #DCFCE7; color: #166534; }
+    .stamp-lv2 { background: #FEF3C7; color: #92400E; }
+    .stamp-lv3 { background: #FEE2E2; color: #991B1B; }
+    .stamp-ssr { background: #E5484D; color: #FFDE59; border-color: #111111; }
+
+    .poster-hero {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .poster-avatar-frame {
+      width: 84px;
+      height: 84px;
+      flex-shrink: 0;
+      border: 3px solid #111111;
+      border-radius: 12px;
+      box-shadow: 3px 3px 0 #111111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .poster-avatar-frame svg {
+      width: 74px;
+      height: 74px;
+      image-rendering: pixelated;
+    }
+    .poster-identity { flex: 1; min-width: 0; }
+    .poster-fam-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 900;
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 2px solid #111111;
+      margin-bottom: 5px;
+    }
+    .poster-main-title {
+      margin: 0 0 4px;
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .poster-persona {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .sticky-verdict {
+      background: var(--yellow);
+      border: 2.5px solid #111111;
+      box-shadow: 3px 3px 0 #111111;
+      border-radius: 8px;
+      padding: 11px 12px;
+      margin: 12px 0;
+      transform: rotate(-1deg);
+    }
+    .sticky-label {
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      color: #78350F;
+      margin-bottom: 3px;
+    }
+    .sticky-text {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.42;
+      color: #111111;
+    }
+
+    .tox-line {
+      font-size: 12px;
+      font-weight: 700;
+      background: #F8FAFC;
+      border: 2px solid #111111;
+      border-radius: 8px;
+      padding: 7px 10px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .module-title {
+      font-size: 12px;
+      font-weight: 900;
+      margin: 0 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .symptoms-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .symptoms-list li {
+      font-size: 12.5px;
+      font-weight: 700;
+      background: #FAFAFA;
+      border: 2px solid #111111;
+      border-radius: 8px;
+      padding: 6px 9px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      line-height: 1.35;
+    }
+
+    .comp-box {
+      border: 2px solid #111111;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #FFFFFF;
+    }
+    .subtype-pill-row {
+      margin-top: 8px;
+      padding-top: 7px;
+      border-top: 1.5px dashed #CBD5E1;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hooks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .hook-card {
+      border: 2px solid #111111;
+      border-radius: 10px;
+      padding: 8px 9px;
+      background: #FFFDF7;
+    }
+    .hook-card.nemesis { background: #FFF5F5; }
+    .hook-label {
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 3px;
+    }
+    .hook-target {
+      font-size: 12.5px;
+      font-weight: 900;
+      margin-bottom: 3px;
+    }
+    .hook-desc {
+      font-size: 11px;
+      color: #444444;
+      line-height: 1.35;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .poster-footer {
+      border-top: 2px dashed #111111;
+      padding-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .qr-box {
+      width: 54px;
+      height: 54px;
+      flex-shrink: 0;
+      border: 2px solid #111111;
+      border-radius: 6px;
+      padding: 3px;
+      background: #FFFFFF;
+    }
+    .qr-box svg { width: 100%; height: 100%; display: block; }
+    .poster-footer-text {
+      font-size: 11px;
+      line-height: 1.4;
+      font-weight: 700;
+      color: #333333;
+    }
+    .poster-footer-disclaimer {
+      font-size: 10px;
+      color: #777777;
+      margin-top: 3px;
+    }
+
+    .result-actions {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .result-sub-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* POSTER MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 17, 17, 0.86);
+      z-index: 100;
+      padding: 16px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-tip {
+      color: #FFDE59;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .modal-img-wrap {
+      max-height: 76dvh;
+      max-width: 92vw;
+      overflow-y: auto;
+      border-radius: 12px;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .modal-img-wrap img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      max-height: 75dvh;
+    }
+    .modal-btns {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #111111;
+      color: #FFFFFF;
+      border: 2px solid #FFDE59;
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 200;
+      white-space: nowrap;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-height: 700px) {
+      .app-shell { padding: 10px 12px 12px; }
+      .question-box { padding: 13px 12px; }
+      .question-text { font-size: 16px; }
+      .opt-btn { padding: 9px 10px; font-size: 13.5px; }
+      .options-list { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- 1. HOME VIEW (Clean, no gallery) -->
+    <section id="view-home" class="view active">
+      <div class="sticker-card hero-box">
+        <div class="hero-badge-row">
+          <span class="tag-pill">🧪 4维隐藏量表</span>
+          <span class="tag-pill">🎭 48题库 · 16亚型</span>
+        </div>
+        <h1 class="hero-title">你是哪种<span>傻逼</span>？</h1>
+        <p class="hero-sub">当代社交血压制造机鉴定器 · 自黑吐槽 / 代入讨厌的人两相宜</p>
+
+        <div id="home-parade" class="pixel-parade"></div>
+
+        <div class="mode-switch">
+          <button type="button" id="btn-mode-self" class="mode-btn active">🪞 自黑模式（测自己）</button>
+          <button type="button" id="btn-mode-proxy" class="mode-btn">🎯 代入模式（帮 TA 测）</button>
+        </div>
+
+        <div id="proxy-input-wrap" class="proxy-input-wrap">
+          <input id="proxy-name-input" class="proxy-input" type="text" maxlength="12" placeholder="可选：给 TA 起个病历代号（如：合租室友 / 某同事）">
+        </div>
+
+        <button type="button" id="btn-start" class="btn btn-primary">⚡ 开始鉴定（24 题 · 约 2 分钟）</button>
+
+        <div class="hero-meta-grid">
+          <div class="hero-meta-item"><strong>10 题量表</strong>日常潜伏期</div>
+          <div class="hero-meta-item"><strong>8 题量表</strong>专属审讯室</div>
+          <div class="hero-meta-item"><strong>6 题抉择</strong>终极修罗场</div>
+        </div>
+      </div>
+
+      <p class="disclaimer">纯属虚构与娱乐自嘲，不骂人，别当真。</p>
+    </section>
+
+    <!-- 2. QUIZ VIEW -->
+    <section id="view-quiz" class="view">
+      <div class="quiz-top">
+        <div class="quiz-meta-bar">
+          <span id="quiz-act-pill" class="act-pill">第一幕 · 日常潜伏期</span>
+          <span id="quiz-counter" class="q-counter">01 / 24</span>
+        </div>
+        <div class="progress-track">
+          <div id="quiz-progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div id="quiz-question-box" class="question-box">
+        <div id="quiz-scene-tag" class="q-scene-tag">场景</div>
+        <h2 id="quiz-question-text" class="question-text"></h2>
+      </div>
+
+      <div id="quiz-answer-area" style="flex:1;display:flex;flex-direction:column;justify-content:center;"></div>
+
+      <div class="quiz-bottom">
+        <button type="button" id="btn-prev" class="btn btn-sm">← 上一题</button>
+        <button type="button" id="btn-quit" class="btn btn-sm">🏠 返回首页</button>
+      </div>
+    </section>
+
+    <!-- 3. TRANSITION VIEW -->
+    <section id="view-transition" class="view">
+      <div id="trans-card" class="sticker-card trans-card">
+        <div id="trans-icon" class="trans-icon">⚠️</div>
+        <div id="trans-badge" class="trans-badge">第一幕检测完毕</div>
+        <h2 id="trans-title" class="trans-title"></h2>
+        <p id="trans-desc" class="trans-desc"></p>
+        <div id="trans-bars" class="trans-bars" style="display:none;"></div>
+        <button type="button" id="btn-trans-next" class="btn btn-primary">进入下一幕 →</button>
+      </div>
+    </section>
+
+    <!-- 4. RESULT VIEW -->
+    <section id="view-result" class="view">
+      <div id="poster-card" class="poster-card">
+        <div class="poster-header">
+          <div class="case-meta">
+            <div class="case-title-small">当代人类迷惑行为鉴定报告</div>
+            <div id="res-case-no">病历号 NO.008 · 受检者：本人</div>
+          </div>
+          <div id="res-tox-stamp" class="toxicity-stamp stamp-lv1">LV.1 嘴强王者</div>
+        </div>
+
+        <div class="poster-hero">
+          <div id="res-avatar" class="poster-avatar-frame"></div>
+          <div class="poster-identity">
+            <span id="res-fam-tag" class="poster-fam-tag">硬刚输出系</span>
+            <h2 id="res-main-title" class="poster-main-title"></h2>
+            <p id="res-persona" class="poster-persona"></p>
+          </div>
+        </div>
+
+        <div class="sticky-verdict">
+          <div class="sticky-label">📌 灵魂判词</div>
+          <p id="res-verdict" class="sticky-text"></p>
+        </div>
+
+        <div id="res-tox-line" class="tox-line"></div>
+
+        <div class="module-title">🩺 典型发作症状</div>
+        <ul id="res-symptoms" class="symptoms-list"></ul>
+
+        <div class="module-title">📊 四大家族成分占比 & 四维隐性属性</div>
+        <div class="comp-box">
+          <div id="res-fam-bars"></div>
+          <div id="res-sub-row" class="subtype-pill-row"></div>
+          <div id="res-trait-bars" style="margin-top:9px;padding-top:9px;border-top:1.5px dashed #CBD5E1;"></div>
+        </div>
+
+        <div class="hooks-grid">
+          <div class="hook-card">
+            <div class="hook-label">💘 你的绝配</div>
+            <div id="res-match-target" class="hook-target"></div>
+            <p id="res-match-desc" class="hook-desc"></p>
+          </div>
+          <div class="hook-card nemesis">
+            <div class="hook-label">⚡ 唯一克星</div>
+            <div id="res-nemesis-target" class="hook-target"></div>
+            <p id="res-nemesis-desc" class="hook-desc"></p>
+          </div>
+        </div>
+
+        <div class="poster-footer">
+          <div id="res-qr" class="qr-box"></div>
+          <div class="poster-footer-text">
+            <div>扫码测测你是什么成分，或代入你讨厌的人帮 TA 测</div>
+            <div class="poster-footer-disclaimer">纯属虚构与娱乐自嘲，不骂人，别当真。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button type="button" id="btn-save-poster" class="btn btn-primary">📸 保存鉴定海报（9:16 高清图）</button>
+        <div class="result-sub-actions">
+          <button type="button" id="btn-copy-text" class="btn btn-sm">📋 复制毒舌文案</button>
+          <button type="button" id="btn-retry" class="btn btn-sm">🔄 再测一次（换支线）</button>
+        </div>
+      </div>
+
+      <div class="sticker-card gallery-section">
+        <div class="section-head">
+          <h2>📖 16 种社交反派图鉴</h2>
+          <span style="font-size:11px;font-weight:800;color:#666;">+ 1 隐藏彩蛋</span>
+        </div>
+        <div id="gallery-tabs" class="fam-tabs"></div>
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 5. POSTER MODAL -->
+  <div id="view-poster-modal" class="modal-overlay">
+    <div class="modal-tip">✨ 长按下方海报图片即可保存到相册</div>
+    <div class="modal-img-wrap">
+      <img id="poster-img-output" alt="当代人类迷惑行为鉴定报告海报">
+    </div>
+    <div class="modal-btns">
+      <button type="button" id="btn-download-png" class="btn btn-primary" style="font-size:14px;padding:10px;">⬇️ 下载 PNG</button>
+      <button type="button" id="btn-close-modal" class="btn" style="font-size:14px;padding:10px 18px;">关闭</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // =========================================================================
+    // 1. 全量权威数据（48 题：一二幕 MBTI 5档量表 + 第三幕伦理四选一）
+    // =========================================================================
+    const DATA = {"FAMS": {"HG": {"name": "硬刚输出系", "color": "#E5484D", "room": "抬杠与说教审讯室"}, "RD": {"name": "软刀内耗系", "color": "#7C3AED", "room": "阴阳与冷战审讯室"}, "SB": {"name": "道德双标系", "color": "#F5A623", "room": "制高点道德审判庭"}, "SG": {"name": "甩锅吸血系", "color": "#22A06B", "room": "算盘与甩锅交易所"}}, "TYPES": {"HG_1": {"fam": "HG", "name": "杠精型", "persona": "你说东他说西，不抬一句浑身难受", "verdict": "你不是在讨论，你只是在等一个反驳的机会。", "symptoms": ["看到“我觉得”三个字，DNA就动了", "赞同别人前必须先说一句“但是”", "吵赢了不开心，没吵够才难受"], "match": {"target": "爹味说教型", "desc": "一个非要教，一个非要杠，能聊到天荒地老"}, "nemesis": {"target": "装糊涂高手型", "desc": "你憋了八百字反驳，他回你一句“对对对”"}, "pixel": {"eyes": "angry", "mouth": "shout", "acc": "exclaim", "hair": "spiky"}}, "HG_2": {"fam": "HG", "name": "爹味说教型", "persona": "张口“听哥一句劝”，好为人师晚期", "verdict": "没人问你意见，但你已经准备好给别人指明人生方向了。", "symptoms": ["听完吐槽三秒，开始规划对方十年人生", "口头禅是“你还是年轻，听我一句劝”", "聚餐喝两口茶，立刻开启行业复盘大会"], "match": {"target": "情绪黑洞型", "desc": "一个爱倒苦水，一个爱当导师，双向奔赴"}, "nemesis": {"target": "杠精型", "desc": "你刚起范儿讲道理，他逐字把你逻辑拆穿"}, "pixel": {"eyes": "glasses", "mouth": "flat", "acc": "tea", "hair": "parted"}}, "HG_3": {"fam": "HG", "name": "懂王吹牛型", "persona": "啥冷门都懂，全靠“我有个朋友”", "verdict": "你涉猎的领域很广，唯一的缺点是全在吹牛。", "symptoms": ["任何行业都有一个神秘的内部朋友", "聊到冷门知识立刻开启强行科普模式", "刚搜完百科三分钟，聊得像十年老行家"], "match": {"target": "无脑跟风型", "desc": "你敢张嘴胡扯，他就敢全盘相信还转发"}, "nemesis": {"target": "阴阳怪气型", "desc": "你刚吹完牛，他笑眯眯补一句“真厉害呢”"}, "pixel": {"eyes": "shades", "mouth": "smirk", "acc": "bulb", "hair": "pomp"}}, "HG_4": {"fam": "HG", "name": "无脑跟风型", "persona": "毫无独立思考，听风就是雨还理直气壮", "verdict": "你的脑子像块海绵，唯独专门吸收谣言和情绪。", "symptoms": ["热搜反转三次，你每次都冲在最前线", "营销号刚发三分钟，你就敢在群里科普", "立场上周和本周完全相反，但同样自信"], "match": {"target": "懂王吹牛型", "desc": "一个负责造神，一个负责鼓掌并到处安利"}, "nemesis": {"target": "扫兴大师型", "desc": "你刚冲完热搜，他一盆冷水泼出反转实锤"}, "pixel": {"eyes": "wide", "mouth": "open", "acc": "megaphone", "hair": "tuft"}}, "RD_1": {"fam": "RD", "name": "阴阳怪气型", "persona": "从不直说诉求，全靠反讽和叹气施压", "verdict": "你说话像在打太极，每句客套里都藏着八百个白眼。", "symptoms": ["微信结尾爱加“呢”“哈”“挺好的”", "夸人像骂人，骂人还让人挑不出毛病", "有话从不直说，专等对方自己悟出来"], "match": {"target": "情绪黑洞型", "desc": "一个冷嘲热讽，一个刚好爱听并自我反思"}, "nemesis": {"target": "装糊涂高手型", "desc": "你拐弯抹角骂半天，他回你一句“啥意思？”"}, "pixel": {"eyes": "side", "mouth": "smirk", "acc": "bubble", "hair": "bob"}}, "RD_2": {"fam": "RD", "name": "扫兴大师型", "persona": "专治各种开心，一盆冷水浇到底", "verdict": "只要你在场，任何快乐的氛围都能在三秒内降到冰点。", "symptoms": ["别人刚晒战利品，你先算出溢价和缺点", "聚会最嗨时，突然来一句“也就这样吧”", "能把任何好消息精准翻译成坏消息"], "match": {"target": "受害者有罪型", "desc": "一个负责浇冷水，一个负责补刀，绝杀气氛"}, "nemesis": {"target": "无脑跟风型", "desc": "你泼了三盆冷水，他依然兴高采烈接着嗨"}, "pixel": {"eyes": "bored", "mouth": "frown", "acc": "cloud", "hair": "flat"}}, "RD_3": {"fam": "RD", "name": "情绪黑洞型", "persona": "永远在卖惨抱怨，把人当免费垃圾桶", "verdict": "你不是来找解决方法的，你只是需要一个听众陪你一起烂。", "symptoms": ["凌晨两点发六十秒语音方阵倾倒负能量", "别人给建议你全否定，只说“你不懂我”", "任何开心话题三句内都能拐回自己多惨"], "match": {"target": "圣母慷慨型", "desc": "一个不停倒苦水，一个圣光普照接单到底"}, "nemesis": {"target": "马后炮甩锅型", "desc": "你刚想求安慰，他直接说“早叫你别这样”"}, "pixel": {"eyes": "spiral", "mouth": "wavy", "acc": "rain", "hair": "messy"}}, "RD_4": {"fam": "RD", "name": "委屈装无辜型", "persona": "惹完事反手装委屈，“我不是故意的”", "verdict": "错是你犯的，烂摊子是别人收的，但最后受伤的居然还是你。", "symptoms": ["捅完娄子先红眼眶，反手让对方道歉", "高频台词：“我真没想那么多，别凶我”", "把所有原则问题精准转移成态度问题"], "match": {"target": "圣母慷慨型", "desc": "你一装委屈，他立刻冲出来替你求情"}, "nemesis": {"target": "双标巨婴型", "desc": "你刚准备掉眼泪，他比你先躺在地上打滚"}, "pixel": {"eyes": "teary", "mouth": "pout", "acc": "tear", "hair": "curl"}}, "SB_1": {"fam": "SB", "name": "双标巨婴型", "persona": "对人圣人标准，对自己宽容无比", "verdict": "错的永远是世界，你只是个还没断奶的无辜宝宝。", "symptoms": ["别人迟到叫没教养，自己迟到叫堵车了", "规则只用来约束别人，自己永远有特例", "顺风时讲公平，逆风时立刻讲人情"], "match": {"target": "过分妈宝型", "desc": "两个巨婴凑一桌，谁都不想当大人"}, "nemesis": {"target": "硬刚杠精型", "desc": "你刚祭出双标逻辑，他立刻翻出聊天记录"}, "pixel": {"eyes": "angry", "mouth": "pout", "acc": "crown", "hair": "tuft"}}, "SB_2": {"fam": "SB", "name": "圣母慷慨型", "persona": "拿别人的利益做顺水人情，劝人大度", "verdict": "你最大的美德，就是替别人原谅所有伤害过他们的人。", "symptoms": ["动不动劝受害者“大过年的别计较了”", "花别人的钱办自己的面子，极其大方", "永远站在道德高地，但从不自己掏腰包"], "match": {"target": "隐形吸血型", "desc": "一个爱白嫖，一个爱慷他人之慨，天作之合"}, "nemesis": {"target": "硬刚杠精型", "desc": "你刚劝完大度，他问你“那这钱你替他赔？”"}, "pixel": {"eyes": "sparkle", "mouth": "smile", "acc": "halo", "hair": "long"}}, "SB_3": {"fam": "SB", "name": "受害者有罪型", "persona": "不怪加害者，专挑受害者的毛病", "verdict": "你以为自己人间清醒，其实只是在对着受伤的人补刀。", "symptoms": ["听完倒霉事第一句必问“一个巴掌拍不响”", "出事从不谴责坏人，专写受害者复盘报告", "坚信“苍蝇不叮无缝的蛋”是宇宙真理"], "match": {"target": "扫兴大师型", "desc": "一个负责泼冷水，一个负责定罪，双倍窒息"}, "nemesis": {"target": "委屈装无辜型", "desc": "你刚想分析他有错，他哭着说你霸凌他"}, "pixel": {"eyes": "narrow", "mouth": "flat", "acc": "gavel", "hair": "parted"}}, "SB_4": {"fam": "SB", "name": "画饼 PUA 型", "persona": "先打压你自信，再画一张吃不到的大饼", "verdict": "你画的饼能绕地球三圈，就是一顿也没让人吃上。", "symptoms": ["先把人夸到天上，再顺手塞过去一堆杂活", "常说“我是为你好，换别人我都不想管”", "谈钱就伤感情，谈未来立刻激情澎湃"], "match": {"target": "过分妈宝型", "desc": "一个爱当精神家长，一个正缺人生遥控器"}, "nemesis": {"target": "隐形吸血型", "desc": "你画了半小时大饼，他问“那先转两百？”"}, "pixel": {"eyes": "shades", "mouth": "grin", "acc": "pie", "hair": "slick"}}, "SG_1": {"fam": "SG", "name": "过分妈宝型", "persona": "精神未断奶，遇事全靠“我妈说”", "verdict": "你已经是个成年人了，但你的人生遥控器还在你妈手里。", "symptoms": ["大事小事都要先拍照发给妈妈审批通过", "吵架吵不过，直接把妈妈拉进群主持公道", "嘴上说自己独立，但密码和决定全听妈的"], "match": {"target": "爹味说教型", "desc": "一个急需人管，一个急着当人生导师"}, "nemesis": {"target": "扫兴大师型", "desc": "你刚搬出“我妈说”，他冷笑“你妈真闲”"}, "pixel": {"eyes": "wide", "mouth": "o", "acc": "bottle", "hair": "bowl"}}, "SG_2": {"fam": "SG", "name": "隐形吸血型", "persona": "占尽便宜还卖乖，“咱们关系还提钱？”", "verdict": "谈钱伤感情，所以你选择只谈感情、顺便省钱。", "symptoms": ["拼单永远凑不到起送费，顺手蹭完免单", "结账时永远刚好在系鞋带或去洗手间", "嘴上喊着“咱俩谁跟谁”，一分钱也没掏过"], "match": {"target": "圣母慷慨型", "desc": "你张嘴要便宜，他替全场宣布免你那份单"}, "nemesis": {"target": "双标巨婴型", "desc": "你想蹭他一杯奶茶，他反手让你请吃火锅"}, "pixel": {"eyes": "dollar", "mouth": "grin", "acc": "abacus", "hair": "slick"}}, "SG_3": {"fam": "SG", "name": "装糊涂高手型", "persona": "占便宜极精明，出力还人情瞬间失忆", "verdict": "你的记忆力非常精准，只自动屏蔽需要你付出的部分。", "symptoms": ["发红包抢得比谁都快，AA收款直接已读不回", "一到搬家干活就失联，吃庆功宴准时现身", "被催账时永远一脸无辜：“啊？我忘啦！”"], "match": {"target": "委屈装无辜型", "desc": "一个装傻充愣，一个装哭卖惨，谁也别干活"}, "nemesis": {"target": "画饼 PUA 型", "desc": "你刚装失忆，他已经把任务拆成日历表了"}, "pixel": {"eyes": "blink", "mouth": "wavy", "acc": "question", "hair": "messy"}}, "SG_4": {"fam": "SG", "name": "马后炮甩锅型", "persona": "出事光速推卸责任，“早知道听我的”", "verdict": "干活时你隐身，出事时你全责归别人，总结时你早料到了。", "symptoms": ["做决定时说“随便”，翻车后说“早料到了”", "出事三秒内完成免责声明与精准甩锅", "永远在事后复盘里展现诸葛亮般的远见"], "match": {"target": "无脑跟风型", "desc": "一个冲锋踩坑，一个事后优雅站在高地复盘"}, "nemesis": {"target": "阴阳怪气型", "desc": "你刚说完“早知道”，他把你的“随便”截图发群"}, "pixel": {"eyes": "side", "mouth": "flat", "acc": "wok", "hair": "spiky"}}}, "EASTER_EGG": {"name": "彩蛋 · 滴水不漏型人间圣人", "persona": "八面玲珑、滴水不漏，毫无破绽", "verdict": "24 道题你居然一道都没露馅，这城府建议直接去考公。", "symptoms": ["每道题都在权衡利弊，生怕留下一丝把柄", "社交场上微笑点头，内心早已写完三套公关稿", "测完一套反派测试，竟硬生生考出了政审满分"], "match": {"target": "装糊涂高手型", "desc": "两个老狐狸互相打太极，聊三小时全是废话"}, "nemesis": {"target": "硬刚杠精型", "desc": "你滴水不漏，他偏要逼你在红蓝阵营二选一"}, "pixel": {"eyes": "sparkle", "mouth": "smile", "acc": "halo", "hair": "parted"}}, "SUBTYPE_COORDS": {"HG": {"++": "HG_2", "+-": "HG_3", "-+": "HG_1", "--": "HG_4"}, "RD": {"++": "RD_1", "+-": "RD_2", "-+": "RD_4", "--": "RD_3"}, "SB": {"++": "SB_4", "+-": "SB_2", "-+": "SB_1", "--": "SB_3"}, "SG": {"++": "SG_2", "+-": "SG_4", "-+": "SG_3", "--": "SG_1"}}, "ACT1_QUESTIONS": [{"id": "A1_1", "scene": "聚餐结账", "q": "聚餐没人主动结账时，我宁可默默先把单买了，也不想陷入尴尬冷场。", "w": {"A": -2, "B": 1}}, {"id": "A1_2", "scene": "聊天分歧", "q": "朋友聊到我明显不同意的观点时，我很难忍住不当场反驳几句。", "w": {"A": 2, "B": 1}}, {"id": "A1_3", "scene": "人情往来", "q": "和关系不错的人一起花钱，我更喜欢把账算清 AA，省得日后心里别扭。", "w": {"A": 1, "B": -2}}, {"id": "A1_4", "scene": "情绪消化", "q": "被人一句无心的话戳到不舒服，我表面会笑笑带过，但心里能复盘好几天。", "w": {"A": -2, "B": 1}}, {"id": "A1_5", "scene": "群聊讨论", "q": "看到群里大家都在夸某部我其实觉得很一般的电影，我会忍不住泼点客观冷水。", "w": {"A": 2, "B": 1}}, {"id": "A1_6", "scene": "规则与人情", "q": "朋友吐槽自己被坑了，我安慰之余，脑子里常会先冒出“他自己也大意了”。", "w": {"A": 1, "B": -2}}, {"id": "A1_7", "scene": "分工协作", "q": "群体活动要有人牵头做攻略时，我通常先观望，除非实在没人干才出手。", "w": {"A": -1, "B": -2}}, {"id": "A1_8", "scene": "分享喜悦", "q": "刷到熟人高调晒升职或买车，我点赞之余，心里多少会闪过一丝酸意或挑刺。", "w": {"A": -1, "B": 2}}, {"id": "A1_9", "scene": "是非立场", "q": "遇到不守规矩或爱占便宜的人，我往往比旁边人更想当场站出来说两句。", "w": {"A": 2, "B": -1}}, {"id": "A1_10", "scene": "边界感", "q": "别人找我帮忙干件麻烦事，我不太会直接拒绝，更习惯先拖着或找个借口绕开。", "w": {"A": -2, "B": -1}}], "ACT2_BRANCHES": {"HG": [{"id": "HG_Q1", "scene": "专业领域", "q": "聊到我稍微了解一点的领域，我总会忍不住主动帮大家梳理逻辑、给建议。", "w": {"C": 2, "D": 1}}, {"id": "HG_Q2", "scene": "争论体验", "q": "哪怕对方说得大体有道理，我也很难控制自己不补一句“但是”来找漏洞。", "w": {"C": -1, "D": 2}}, {"id": "HG_Q3", "scene": "热点吃瓜", "q": "刷到全网都在热议的大瓜，我很容易先跟着主流情绪表态，反转了再说。", "w": {"C": -2, "D": -1}}, {"id": "HG_Q4", "scene": "人脉见识", "q": "聊天冷场或聊到小众话题时，我很享受靠“我听说/我认识”把话题接住。", "w": {"C": 2, "D": -1}}, {"id": "HG_Q5", "scene": "给建议", "q": "看到朋友走弯路，就算他没问我意见，我也觉得作为过来人必须点醒他。", "w": {"C": 2, "D": 1}}, {"id": "HG_Q6", "scene": "逆向思维", "q": "大家意见越是一边倒，我就越想站到对面去挑一挑毛病，显得更独立。", "w": {"C": -1, "D": 2}}, {"id": "HG_Q7", "scene": "种草消费", "q": "看到很多博主都在夸某款新产品，我很容易上头跟风，也爱顺手安利给别人。", "w": {"C": -2, "D": -1}}, {"id": "HG_Q8", "scene": "面子胜负", "q": "在群里和人争论某件小事时，哪怕知道自己理亏了一点，嘴上也很难直接认输。", "w": {"C": 0, "D": 2}}], "RD": [{"id": "RD_Q1", "scene": "表达不满", "q": "对亲近的人不满意时，我很少直接发火，更习惯用反话、冷淡或叹气让他自己悟。", "w": {"C": 2, "D": 1}}, {"id": "RD_Q2", "scene": "热闹氛围", "q": "大家都在兴高采烈庆祝某件事时，我脑子里常会冷静地冒出泼冷水的现实风险。", "w": {"C": 2, "D": -1}}, {"id": "RD_Q3", "scene": "倾诉习惯", "q": "心情差找朋友吐槽时，我其实不想听理性解决方案，只想有人陪我一起难过。", "w": {"C": -2, "D": -1}}, {"id": "RD_Q4", "scene": "犯错之后", "q": "不小心搞砸了小事被指出时，我第一反应是觉得对方语气太凶，反而更委屈。", "w": {"C": -1, "D": 2}}, {"id": "RD_Q5", "scene": "微信语气", "q": "心里有点膈应但又不想撕破脸时，我发微信会下意识多加“呢”“哈”“挺好的”。", "w": {"C": 2, "D": 1}}, {"id": "RD_Q6", "scene": "预期管理", "q": "别人兴冲冲向我安利新买的宝贝，我总忍不住先挑一两个缺点帮对方降温。", "w": {"C": 2, "D": -1}}, {"id": "RD_Q7", "scene": "深夜情绪", "q": "遇到挫折时，我很容易把一件小事放大成“我最近怎么什么都不顺”的无力感。", "w": {"C": -2, "D": -1}}, {"id": "RD_Q8", "scene": "关系摩擦", "q": "吵架后哪怕自己也有错，只要对方先冷暴力或态度不好，我就绝对不会先低头。", "w": {"C": -1, "D": 2}}], "SB": [{"id": "SB_Q1", "scene": "激励别人", "q": "需要别人帮忙扛重活时，我很擅长先夸对方能力强、再聊聊未来的长远好处。", "w": {"C": 2, "D": 1}}, {"id": "SB_Q2", "scene": "调停劝架", "q": "看到别人起冲突，我常常习惯性劝吃亏的一方“算了别计较，大度一点”。", "w": {"C": 2, "D": -1}}, {"id": "SB_Q3", "scene": "宽己严人", "q": "同样是迟到或忘事，别人犯了我挺烦的，但轮到自己时总觉得情有可原。", "w": {"C": -2, "D": 2}}, {"id": "SB_Q4", "scene": "复盘倒霉事", "q": "听说谁遇到了奇葩事，我下意识觉得“一个巴掌拍不响”，他肯定也有问题。", "w": {"C": -2, "D": -1}}, {"id": "SB_Q5", "scene": "带人风格", "q": "带新人或配合搭档时，我觉得适当敲打一下对方的不足，其实是在帮他成长。", "w": {"C": 2, "D": 1}}, {"id": "SB_Q6", "scene": "顺水人情", "q": "在集体场合里，我偶尔会为了气氛和谐，替身边好说话的人先答应下一些小事。", "w": {"C": 2, "D": -1}}, {"id": "SB_Q7", "scene": "规则特例", "q": "遇到排队或流程特别麻烦时，如果自己真有急事，我觉得破一次例也没什么。", "w": {"C": -1, "D": 2}}, {"id": "SB_Q8", "scene": "人间清醒", "q": "比起单纯安慰受害者，我更倾向于冷静分析他当初怎么把漏洞暴露出来的。", "w": {"C": -1, "D": -2}}], "SG": [{"id": "SG_Q1", "scene": "拼单顺路", "q": "和熟人拼单、拼车或顺路蹭饭时，我觉得关系好没必要每次都算得太细。", "w": {"C": 2, "D": 1}}, {"id": "SG_Q2", "scene": "事后复盘", "q": "项目或旅行翻车后，我经常会觉得“其实我当初就隐约觉得这个方案不靠谱”。", "w": {"C": 2, "D": -1}}, {"id": "SG_Q3", "scene": "群里派活", "q": "群里需要人出力或垫钱时，如果没直接点我名，我通常会假装没看见先静观其变。", "w": {"C": -2, "D": 2}}, {"id": "SG_Q4", "scene": "重大决定", "q": "遇到花大钱、换工作或感情大事，我还是习惯先问过爸妈的意见才敢拍板。", "w": {"C": -2, "D": -2}}, {"id": "SG_Q5", "scene": "小便宜心态", "q": "如果对方主动说“没事我请”或“零头抹掉”，我通常不会太客气，顺水推舟接受。", "w": {"C": 2, "D": 1}}, {"id": "SG_Q6", "scene": "撇清责任", "q": "团队出岔子时，我第一反应是先翻聊天记录确认，证明当初这个决定不是我拍板的。", "w": {"C": 2, "D": -1}}, {"id": "SG_Q7", "scene": "选择性遗忘", "q": "别人欠我人情我记得挺清，但答应帮别人办的麻烦事，一忙起来就容易“忘了”。", "w": {"C": -2, "D": 2}}, {"id": "SG_Q8", "scene": "家长兜底", "q": "在外面受了委屈或遇到难搞的扯皮事，我下意识还是想找家里长辈帮我出主意。", "w": {"C": -2, "D": -2}}]}, "ACT3_QUESTIONS": [{"id": "A3_1", "dim": "利益 vs 道德", "q": "你面前有个神秘按钮：按一次立刻进账一百万，但世界上某个你完全不认识的人会立刻倒大霉丢掉工作，你会：", "opts": [{"score": 0, "t": "转身就走，这种损人利己的黑心钱绝不能碰"}, {"score": 1, "t": "犹豫半天忍住不按，但回家后悔得整晚睡不着"}, {"score": 2, "t": "咬牙按一次就收手，顺手转给慈善机构十块钱"}, {"score": 3, "t": "直接开启连点器按到按钮冒烟，顺便问能批发不"}]}, {"id": "A3_2", "dim": "亲密关系伦理", "q": "你撞见最好朋友的未婚夫在酒店出轨，对方当场求你保密，并立刻转你五万块封口费，你会：", "opts": [{"score": 0, "t": "退回转账并拍照留证，第一时间告诉好朋友真相"}, {"score": 1, "t": "不收钱也不当面说，匿名发小号短信提醒朋友"}, {"score": 2, "t": "收下五万块装看不见，反正他俩迟早自己会暴露"}, {"score": 3, "t": "收下五万块，转头再向朋友卖这份情报收双份钱"}]}, {"id": "A3_3", "dim": "职场功劳与背锅", "q": "你和同事熬夜做完核心项目，老板在大会上误以为全是你干的，当场宣布给你升职加薪，同事就在台下看着你：", "opts": [{"score": 0, "t": "当场拿话筒澄清，把功劳平分给一起熬夜的同事"}, {"score": 1, "t": "台上先微笑领奖，台下请同事吃顿大餐赔礼道歉"}, {"score": 2, "t": "顺势领奖，顺便夸一句“同事打下手也挺辛苦的”"}, {"score": 3, "t": "全盘笑纳，散会后谈心：“你状态不行多向我学”"}]}, {"id": "A3_4", "dim": "功利主义与人情", "q": "末日避难所只剩最后一个名额，你手里握着决定权：门外站着曾救过你命的穷恩人，和承诺分你半数家产的富豪亲戚：", "opts": [{"score": 0, "t": "毫不犹豫拉恩人进来，做人不能连救命之恩都忘"}, {"score": 1, "t": "咬牙选恩人，但关门前顺手把富豪的金表扒下来"}, {"score": 2, "t": "拉富豪进来，冲门外喊：“恩情我下辈子再报答！”"}, {"score": 3, "t": "让俩人现场竞价，谁签卖身契加全额财产就放谁"}]}, {"id": "A3_5", "dim": "规则漏洞与占便宜", "q": "某家很良心的小本经营网店系统出故障，买十块钱商品竟自动退款一千元且商家短期内查不到，你会：", "opts": [{"score": 0, "t": "立刻联系客服提醒漏洞，顺手把多退的钱原路还回"}, {"score": 1, "t": "自己不薅羊毛，但也懒得费劲去提醒店家修系统"}, {"score": 2, "t": "悄悄下两单赚个零花钱，安慰自己就当领平台补贴"}, {"score": 3, "t": "连夜拉亲友团写脚本狂薅十万，直到把小店薅倒闭"}]}, {"id": "A3_6", "dim": "公共利益 vs 个人私欲", "q": "小区匿名投票决定是否砍掉唯一的儿童公园改建停车场：你没娃但有车，且新停车场离你家电梯口只有十步：", "opts": [{"score": 0, "t": "投反对票，公共绿地不能为了自己省几步路就毁了"}, {"score": 1, "t": "选择弃权不投票，谁赢都行反正别把火烧到我头上"}, {"score": 2, "t": "悄悄投赞成票，在业主群里却跟着大家一起骂物业"}, {"score": 3, "t": "买通水军刷赞成票，顺便把车位高价转租给邻居"}]}]};
+    const FAMS = DATA.FAMS;
+    const TYPES = DATA.TYPES;
+    const EASTER_EGG = DATA.EASTER_EGG;
+    const SUBTYPE_COORDS = DATA.SUBTYPE_COORDS;
+    const ACT1_QUESTIONS = DATA.ACT1_QUESTIONS;
+    const ACT2_BRANCHES = DATA.ACT2_BRANCHES;
+    const ACT3_QUESTIONS = DATA.ACT3_QUESTIONS;
+
+    const FAM_ORDER = ["HG", "RD", "SB", "SG"];
+    const FAM_CORNERS = {
+      HG: { a: 1, b: 1 },
+      RD: { a: -1, b: 1 },
+      SB: { a: 1, b: -1 },
+      SG: { a: -1, b: -1 }
+    };
+
+    const LIKERT_CHOICES = [
+      { val: -2, cls: "v-neg2", short: "很不符", symbol: "✕✕" },
+      { val: -1, cls: "v-neg1", short: "不太符", symbol: "✕" },
+      { val: 0,  cls: "v-zero", short: "说不清", symbol: "—" },
+      { val: 1,  cls: "v-pos1", short: "较符合", symbol: "✓" },
+      { val: 2,  cls: "v-pos2", short: "很符合", symbol: "✓✓" }
+    ];
+
+    const TOXICITY_LEVELS = [
+      { min: 0, max: 4, code: "LV.1", badge: "LV.1 嘴强王者", cls: "stamp-lv1", bg: "#DCFCE7", fg: "#166534", desc: "平时看着像反派，真到关键时刻还是个守底线的好人。" },
+      { min: 5, max: 9, code: "LV.2", badge: "LV.2 精明利己", cls: "stamp-lv2", bg: "#FEF3C7", fg: "#92400E", desc: "不干伤天害理的大恶，但绝不让自己吃一丁点暗亏。" },
+      { min: 10, max: 14, code: "LV.3", badge: "LV.3 社交毒瘤", cls: "stamp-lv3", bg: "#FEE2E2", fg: "#991B1B", desc: "已经把双标与缺德内化成了肌肉记忆，建议随身带说明书。" },
+      { min: 15, max: 18, code: "SSR", badge: "SSR · 纯血活阎王", cls: "stamp-ssr", bg: "#E5484D", fg: "#FFDE59", desc: "毫无心理负担的终极反派，建议直接收录进《人类迷惑行为大赏》。" }
+    ];
+
+    // =========================================================================
+    // 2. 匿名轻量埋点钩子
+    // =========================================================================
+    function trackEvent(eventName, payload) {
+      try {
+        if (window.umami && typeof window.umami.track === "function") {
+          window.umami.track(eventName, payload || {});
+        }
+      } catch (e) { /* silent no-op */ }
+    }
+
+    // =========================================================================
+    // 3. 工具函数与 16x16 像素小人矩阵
+    // =========================================================================
+    function formatSubtypeWithSB(typeName) {
+      return typeName.endsWith("型") ? typeName + "傻逼" : typeName + "型傻逼";
+    }
+
+    function formatFullTitle(famName, typeName) {
+      return famName + " · " + formatSubtypeWithSB(typeName);
+    }
+
+    function shuffledIndices(n) {
+      const arr = [];
+      for (let i = 0; i < n; i++) arr.push(i);
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+      }
+      return arr;
+    }
+
+    function getToxicityLevel(score) {
+      for (const lv of TOXICITY_LEVELS) {
+        if (score >= lv.min && score <= lv.max) return lv;
+      }
+      return TOXICITY_LEVELS[0];
+    }
+
+    function buildPixelRects(pixelCfg, famColor) {
+      const rects = [];
+      const add = (x, y, w, h, color) => rects.push({ x, y, w, h, color });
+      const bg = famColor || "#FFDE59";
+      const skin = "#FFE0BD";
+      const outline = "#111111";
+      const hairColor = "#1F2937";
+      const shirtColor = "#FFFFFF";
+
+      add(0, 0, 16, 16, bg);
+      add(1, 1, 2, 1, "rgba(255,255,255,0.35)");
+      add(1, 2, 1, 1, "rgba(255,255,255,0.35)");
+
+      add(4, 13, 8, 3, outline);
+      add(5, 14, 6, 2, shirtColor);
+      add(7, 14, 2, 2, bg);
+
+      add(3, 4, 10, 9, outline);
+      add(4, 5, 8, 7, skin);
+      add(4, 9, 1, 1, "#FCA5A5");
+      add(11, 9, 1, 1, "#FCA5A5");
+
+      const hair = pixelCfg.hair || "spiky";
+      if (hair === "spiky") {
+        add(3, 3, 10, 2, hairColor); add(4, 2, 2, 1, hairColor); add(7, 2, 2, 1, hairColor); add(10, 2, 2, 1, hairColor);
+      } else if (hair === "parted") {
+        add(3, 3, 10, 2, hairColor); add(4, 2, 8, 1, hairColor); add(6, 4, 1, 1, skin);
+      } else if (hair === "pomp") {
+        add(3, 2, 10, 3, hairColor); add(4, 1, 7, 1, hairColor);
+      } else if (hair === "bob") {
+        add(2, 4, 12, 6, hairColor); add(3, 3, 10, 2, hairColor); add(4, 5, 8, 7, skin);
+      } else if (hair === "long") {
+        add(2, 3, 12, 10, hairColor); add(4, 5, 8, 7, skin);
+      } else if (hair === "curl") {
+        add(3, 3, 10, 2, hairColor); add(2, 5, 1, 4, hairColor); add(13, 5, 1, 4, hairColor);
+      } else if (hair === "bowl") {
+        add(3, 3, 10, 3, hairColor); add(4, 2, 8, 1, hairColor);
+      } else if (hair === "slick") {
+        add(3, 3, 10, 2, hairColor); add(5, 2, 7, 1, hairColor);
+      } else if (hair === "messy") {
+        add(3, 3, 10, 2, hairColor); add(2, 4, 1, 2, hairColor); add(13, 4, 1, 2, hairColor); add(5, 2, 2, 1, hairColor); add(9, 2, 3, 1, hairColor);
+      } else if (hair === "flat") {
+        add(3, 3, 10, 2, hairColor);
+      } else {
+        add(4, 3, 8, 2, hairColor); add(7, 1, 2, 2, hairColor);
+      }
+
+      const eyes = pixelCfg.eyes || "wide";
+      if (eyes === "angry") {
+        add(5, 7, 2, 1, outline); add(9, 7, 2, 1, outline); add(6, 8, 1, 1, outline); add(9, 8, 1, 1, outline);
+      } else if (eyes === "glasses") {
+        add(4, 7, 3, 2, outline); add(9, 7, 3, 2, outline); add(7, 7, 2, 1, outline); add(5, 8, 1, 1, "#E0F2FE"); add(10, 8, 1, 1, "#E0F2FE");
+      } else if (eyes === "shades") {
+        add(4, 7, 4, 2, outline); add(8, 7, 4, 2, outline); add(5, 7, 1, 1, "#FFFFFF"); add(9, 7, 1, 1, "#FFFFFF");
+      } else if (eyes === "side") {
+        add(5, 7, 2, 2, "#FFFFFF"); add(9, 7, 2, 2, "#FFFFFF"); add(6, 8, 1, 1, outline); add(10, 8, 1, 1, outline);
+      } else if (eyes === "bored") {
+        add(5, 8, 2, 1, outline); add(9, 8, 2, 1, outline);
+      } else if (eyes === "spiral") {
+        add(5, 7, 2, 2, "#6D28D9"); add(9, 7, 2, 2, "#6D28D9"); add(5, 7, 1, 1, "#FFFFFF"); add(10, 8, 1, 1, "#FFFFFF");
+      } else if (eyes === "teary") {
+        add(5, 7, 2, 2, outline); add(9, 7, 2, 2, outline); add(5, 7, 1, 1, "#FFFFFF"); add(9, 7, 1, 1, "#FFFFFF"); add(5, 9, 1, 2, "#38BDF8"); add(10, 9, 1, 2, "#38BDF8");
+      } else if (eyes === "sparkle") {
+        add(5, 7, 2, 2, outline); add(9, 7, 2, 2, outline); add(5, 7, 1, 1, "#FFDE59"); add(9, 7, 1, 1, "#FFDE59");
+      } else if (eyes === "narrow") {
+        add(5, 7, 2, 1, outline); add(9, 7, 2, 1, outline); add(5, 8, 1, 1, "#7F1D1D"); add(10, 8, 1, 1, "#7F1D1D");
+      } else if (eyes === "dollar") {
+        add(5, 7, 2, 2, "#15803D"); add(9, 7, 2, 2, "#15803D"); add(5, 7, 1, 1, "#FEF08A"); add(9, 7, 1, 1, "#FEF08A");
+      } else if (eyes === "blink") {
+        add(5, 8, 2, 1, outline); add(9, 7, 2, 2, outline); add(9, 7, 1, 1, "#FFFFFF");
+      } else {
+        add(5, 7, 2, 2, outline); add(9, 7, 2, 2, outline); add(5, 7, 1, 1, "#FFFFFF"); add(9, 7, 1, 1, "#FFFFFF");
+      }
+
+      const mouth = pixelCfg.mouth || "flat";
+      if (mouth === "shout") { add(6, 10, 4, 2, "#991B1B"); add(7, 10, 2, 1, "#FFFFFF"); }
+      else if (mouth === "smirk") { add(7, 10, 3, 1, outline); add(9, 9, 1, 1, outline); }
+      else if (mouth === "open") { add(7, 10, 2, 2, "#991B1B"); }
+      else if (mouth === "frown") { add(6, 11, 4, 1, outline); add(7, 10, 2, 1, outline); }
+      else if (mouth === "wavy") { add(6, 10, 1, 1, outline); add(7, 11, 2, 1, outline); add(9, 10, 1, 1, outline); }
+      else if (mouth === "pout") { add(7, 10, 2, 1, "#E11D48"); }
+      else if (mouth === "smile") { add(6, 10, 1, 1, outline); add(7, 11, 2, 1, outline); add(9, 10, 1, 1, outline); }
+      else if (mouth === "grin") { add(6, 10, 4, 2, "#FFFFFF"); add(6, 10, 4, 1, outline); }
+      else if (mouth === "o") { add(7, 10, 2, 2, outline); add(7, 10, 1, 1, "#FCA5A5"); }
+      else { add(6, 10, 4, 1, outline); }
+
+      const acc = pixelCfg.acc || "";
+      if (acc === "exclaim") { add(13, 1, 2, 4, "#FFDE59"); add(13, 6, 2, 1, "#FFDE59"); }
+      else if (acc === "tea") { add(12, 11, 3, 3, "#FFFFFF"); add(13, 12, 1, 1, "#15803D"); }
+      else if (acc === "bulb") { add(13, 1, 2, 3, "#FFDE59"); add(13, 4, 2, 1, "#9CA3AF"); }
+      else if (acc === "megaphone") { add(12, 9, 3, 3, "#FFDE59"); add(14, 8, 1, 5, "#111111"); }
+      else if (acc === "bubble") { add(12, 1, 3, 3, "#FFFFFF"); add(13, 2, 1, 1, "#111111"); }
+      else if (acc === "cloud") { add(1, 1, 4, 2, "#94A3B8"); add(2, 0, 2, 1, "#CBD5E1"); }
+      else if (acc === "rain") { add(1, 1, 4, 2, "#64748B"); add(2, 4, 1, 1, "#38BDF8"); add(4, 4, 1, 1, "#38BDF8"); }
+      else if (acc === "tear") { add(13, 2, 2, 2, "#38BDF8"); }
+      else if (acc === "crown") { add(5, 0, 6, 2, "#FFDE59"); add(5, 0, 1, 1, "#F59E0B"); add(10, 0, 1, 1, "#F59E0B"); }
+      else if (acc === "halo") { add(4, 0, 8, 1, "#FFDE59"); add(3, 1, 1, 1, "#FFDE59"); add(12, 1, 1, 1, "#FFDE59"); }
+      else if (acc === "gavel") { add(12, 2, 3, 2, "#78350F"); add(13, 4, 1, 3, "#B45309"); }
+      else if (acc === "pie") { add(12, 10, 3, 3, "#FDE68A"); add(12, 10, 3, 1, "#D97706"); }
+      else if (acc === "bottle") { add(12, 10, 3, 4, "#FFFFFF"); add(13, 9, 1, 1, "#F472B6"); }
+      else if (acc === "abacus") { add(12, 10, 3, 4, "#92400E"); add(13, 11, 1, 1, "#FFDE59"); add(13, 13, 1, 1, "#FFDE59"); }
+      else if (acc === "question") { add(13, 1, 2, 1, "#FFDE59"); add(14, 2, 1, 2, "#FFDE59"); add(13, 5, 1, 1, "#FFDE59"); }
+      else if (acc === "wok") { add(12, 9, 3, 3, "#111111"); add(14, 12, 1, 2, "#4B5563"); }
+
+      return rects;
+    }
+
+    function renderPixelSVG(pixelCfg, famColor) {
+      const rects = buildPixelRects(pixelCfg, famColor);
+      const body = rects
+        .map(r => `<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" fill="${r.color}"/>`)
+        .join("");
+      return `<svg viewBox="0 0 16 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
+    }
+
+    function drawPixelOnCanvas(ctx, pixelCfg, famColor, dx, dy, size) {
+      const unit = size / 16;
+      const rects = buildPixelRects(pixelCfg, famColor);
+      for (const r of rects) {
+        ctx.fillStyle = r.color;
+        ctx.fillRect(
+          Math.floor(dx + r.x * unit),
+          Math.floor(dy + r.y * unit),
+          Math.ceil(r.w * unit),
+          Math.ceil(r.h * unit)
+        );
+      }
+    }
+
+    function buildQRMatrix() {
+      const size = 15;
+      const grid = Array.from({ length: size }, () => Array(size).fill(0));
+      const drawFinder = (ox, oy) => {
+        for (let y = 0; y < 5; y++) {
+          for (let x = 0; x < 5; x++) {
+            const border = x === 0 || x === 4 || y === 0 || y === 4;
+            const center = x === 2 && y === 2;
+            grid[oy + y][ox + x] = (border || center) ? 1 : 0;
+          }
+        }
+      };
+      drawFinder(0, 0); drawFinder(size - 5, 0); drawFinder(0, size - 5);
+      let seed = 20261119;
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          if ((x < 6 && y < 6) || (x >= size - 6 && y < 6) || (x < 6 && y >= size - 6)) continue;
+          seed = (seed * 1664525 + 1013904223) % 4294967296;
+          grid[y][x] = (seed % 100) < 48 ? 1 : 0;
+        }
+      }
+      return grid;
+    }
+
+    const QR_GRID = buildQRMatrix();
+    function renderQRSVG() {
+      const size = QR_GRID.length;
+      let rects = `<rect width="${size}" height="${size}" fill="#FFFFFF"/>`;
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          if (QR_GRID[y][x]) rects += `<rect x="${x}" y="${y}" width="1" height="1" fill="#111111"/>`;
+        }
+      }
+      return `<svg viewBox="0 0 ${size} ${size}" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
+    }
+
+    // =========================================================================
+    // 4. 应用状态机与四维加减分计分引擎
+    // =========================================================================
+    const state = {
+      view: "HOME",
+      mode: "self",
+      proxyName: "",
+      galleryFam: "HG",
+      qIndex: 0, // 0..23
+      branchFam: "HG",
+      answers: {
+        act1: {}, // 0..9 -> -2 | -1 | 0 | 1 | 2
+        act2: {}, // 10..17 -> -2 | -1 | 0 | 1 | 2
+        act3: {}  // 18..23 -> { isEscape: bool, score?: 0|1|2|3 }
+      },
+      shuffles: {}, // Act 3 only: `3_${qId}` -> [0..3 shuffled]
+      pendingTransition: null,
+      caseNo: "008",
+      lastResult: null,
+      lastPosterDataUrl: ""
+    };
+
+    function resetQuizState() {
+      state.qIndex = 0;
+      state.branchFam = "HG";
+      state.answers = { act1: {}, act2: {}, act3: {} };
+      state.shuffles = {};
+      state.pendingTransition = null;
+      state.caseNo = String(Math.floor(100 + Math.random() * 899));
+      state.lastResult = null;
+      state.lastPosterDataUrl = "";
+    }
+
+    function getShuffleOrder(key) {
+      if (!state.shuffles[key]) {
+        state.shuffles[key] = shuffledIndices(4);
+      }
+      return state.shuffles[key];
+    }
+
+    function computeAct1Result() {
+      let scoreA = 0, scoreB = 0;
+      let maxAbsA = 0, maxAbsB = 0;
+      let nonNeutralCount = 0;
+
+      for (let i = 0; i < ACT1_QUESTIONS.length; i++) {
+        const q = ACT1_QUESTIONS[i];
+        maxAbsA += Math.abs(q.w.A || 0) * 2;
+        maxAbsB += Math.abs(q.w.B || 0) * 2;
+        const val = state.answers.act1[i];
+        if (typeof val === "number" && val !== 0) {
+          nonNeutralCount++;
+          scoreA += val * (q.w.A || 0);
+          scoreB += val * (q.w.B || 0);
+        }
+      }
+
+      const normA = maxAbsA > 0 ? scoreA / maxAbsA : 0; // -1..+1
+      const normB = maxAbsB > 0 ? scoreB / maxAbsB : 0; // -1..+1
+
+      // 2x2 象限判定主大类（全选 0 默认进 HG）
+      let winner = "HG";
+      if (nonNeutralCount > 0) {
+        if (scoreA >= 0 && scoreB >= 0) winner = "HG";
+        else if (scoreA < 0 && scoreB >= 0) winner = "RD";
+        else if (scoreA >= 0 && scoreB < 0) winner = "SB";
+        else winner = "SG";
+      }
+
+      // 连续相似度转四大家族百分比（全选 0 安全返回 0%）
+      const pcts = { HG: 0, RD: 0, SB: 0, SG: 0 };
+      if (nonNeutralCount > 0) {
+        const raw = {};
+        let sum = 0;
+        for (const fam of FAM_ORDER) {
+          const c = FAM_CORNERS[fam];
+          // 余弦/点积映射至正权重，确保主象限最高且四项分布有区分度
+          const affinity = Math.exp((c.a * normA + c.b * normB) * 1.6);
+          raw[fam] = affinity;
+          sum += affinity;
+        }
+        for (const fam of FAM_ORDER) {
+          pcts[fam] = sum === 0 ? 0 : Math.round((raw[fam] / sum) * 100);
+        }
+      }
+
+      return { scoreA, scoreB, normA, normB, nonNeutralCount, pcts, winner };
+    }
+
+    function computeFinalResult() {
+      let eCount = 0;
+      for (let i = 0; i < 10; i++) {
+        if (state.answers.act1[i] === 0) eCount++;
+      }
+      for (let i = 10; i < 18; i++) {
+        if (state.answers.act2[i] === 0) eCount++;
+      }
+      for (let i = 18; i < 24; i++) {
+        if (state.answers.act3[i] && state.answers.act3[i].isEscape) eCount++;
+      }
+
+      const act1 = computeAct1Result();
+      const fam = state.branchFam;
+      const qs2 = ACT2_BRANCHES[fam];
+
+      let scoreC = 0, scoreD = 0;
+      let maxAbsC = 0, maxAbsD = 0;
+      let act2NonNeutral = 0;
+
+      for (let j = 0; j < qs2.length; j++) {
+        const q = qs2[j];
+        maxAbsC += Math.abs(q.w.C || 0) * 2;
+        maxAbsD += Math.abs(q.w.D || 0) * 2;
+        const val = state.answers.act2[10 + j];
+        if (typeof val === "number" && val !== 0) {
+          act2NonNeutral++;
+          scoreC += val * (q.w.C || 0);
+          scoreD += val * (q.w.D || 0);
+        }
+      }
+
+      const normC = maxAbsC > 0 ? scoreC / maxAbsC : 0;
+      const normD = maxAbsD > 0 ? scoreD / maxAbsD : 0;
+
+      // 2x2 象限映射主亚型 & 连续亲和度映射副亚型
+      const corners = [
+        { key: "++", c: 1, d: 1 },
+        { key: "+-", c: 1, d: -1 },
+        { key: "-+", c: -1, d: 1 },
+        { key: "--", c: -1, d: -1 }
+      ];
+      const mainKey = (scoreC >= 0 ? "+" : "-") + (scoreD >= 0 ? "+" : "-");
+      const mainTypeId = SUBTYPE_COORDS[fam][mainKey];
+
+      let subTypeId = null;
+      if (act2NonNeutral > 0) {
+        const ranked = corners
+          .map((item, idx) => ({
+            id: SUBTYPE_COORDS[fam][item.key],
+            score: item.c * normC + item.d * normD,
+            order: idx
+          }))
+          .filter(x => x.id !== mainTypeId)
+          .sort((a, b) => (b.score - a.score) || (a.order - b.order));
+        subTypeId = ranked[0].id;
+      }
+
+      // 四维 MBTI 双极百分比（0..100%，50% 为中点）
+      const toPct = norm => Math.max(5, Math.min(95, Math.round(50 + norm * 45)));
+      const traits = [
+        { left: "正面外放", right: "迂回隐蔽", leftPct: act1.nonNeutralCount ? toPct(act1.normA) : 50 },
+        { left: "情绪观念", right: "利益规则", leftPct: act1.nonNeutralCount ? toPct(act1.normB) : 50 },
+        { left: "主导掌控", right: "旁观回避", leftPct: act2NonNeutral ? toPct(normC) : 50 },
+        { left: "自我防御", right: "顺从消化", leftPct: act2NonNeutral ? toPct(normD) : 50 }
+      ];
+
+      // 第三幕：毒性得分 0..18
+      let toxScore = 0;
+      for (let i = 18; i < 24; i++) {
+        const ans = state.answers.act3[i];
+        if (ans && !ans.isEscape && typeof ans.score === "number") {
+          toxScore += ans.score;
+        }
+      }
+      const toxicity = getToxicityLevel(toxScore);
+      const isEasterEgg = eCount >= 9;
+
+      return {
+        isEasterEgg,
+        eCount,
+        act1,
+        fam,
+        mainTypeId,
+        subTypeId,
+        traits,
+        toxScore,
+        toxicity
+      };
+    }
+
+    // =========================================================================
+    // 5. 视图切换与渲染
+    // =========================================================================
+    function showView(viewId) {
+      state.view = viewId;
+      document.querySelectorAll(".view").forEach(el => el.classList.remove("active"));
+      const target = document.getElementById("view-" + viewId.toLowerCase());
+      if (target) target.classList.add("active");
+      window.scrollTo(0, 0);
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove("show"), 2000);
+    }
+
+    function renderHome() {
+      const parade = document.getElementById("home-parade");
+      const reps = ["HG_1", "RD_1", "SB_1", "SG_1"];
+      parade.innerHTML = reps.map(tid => {
+        const t = TYPES[tid];
+        const color = FAMS[t.fam].color;
+        return `<div class="pixel-chip" title="${t.name}">${renderPixelSVG(t.pixel, color)}</div>`;
+      }).join("");
+      renderGallery();
+    }
+
+    function renderGallery() {
+      const tabsEl = document.getElementById("gallery-tabs");
+      tabsEl.innerHTML = FAM_ORDER.map(fam => {
+        const f = FAMS[fam];
+        const isActive = state.galleryFam === fam;
+        const style = isActive ? `background:${f.color};` : "";
+        return `<button type="button" class="fam-tab ${isActive ? "active" : ""}" data-fam="${fam}" style="${style}">${f.name.slice(0, 4)}</button>`;
+      }).join("");
+
+      tabsEl.querySelectorAll(".fam-tab").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.galleryFam = btn.dataset.fam;
+          renderGallery();
+        });
+      });
+
+      const gridEl = document.getElementById("gallery-grid");
+      const famColor = FAMS[state.galleryFam].color;
+      const items = [1, 2, 3, 4].map(n => TYPES[`${state.galleryFam}_${n}`]);
+      gridEl.innerHTML = items.map(t => `
+        <div class="gallery-item">
+          <div class="gallery-avatar" style="background:${famColor};">${renderPixelSVG(t.pixel, famColor)}</div>
+          <div class="gallery-info">
+            <h3>${t.name}</h3>
+            <p>${t.persona}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function getCurrentQuestionObj() {
+      const idx = state.qIndex;
+      if (idx < 10) {
+        return {
+          act: 1,
+          q: ACT1_QUESTIONS[idx],
+          actLabel: "第一幕 · 日常潜伏期",
+          actColor: "#111111",
+          scene: "习惯自查 · " + ACT1_QUESTIONS[idx].scene,
+          saved: state.answers.act1[idx]
+        };
+      } else if (idx < 18) {
+        const localIdx = idx - 10;
+        const famInfo = FAMS[state.branchFam];
+        const q = ACT2_BRANCHES[state.branchFam][localIdx];
+        return {
+          act: 2,
+          q: q,
+          actLabel: "第二幕 · " + famInfo.room,
+          actColor: famInfo.color,
+          scene: famInfo.name + " · " + q.scene,
+          saved: state.answers.act2[idx]
+        };
+      } else {
+        const localIdx = idx - 18;
+        const q = ACT3_QUESTIONS[localIdx];
+        return {
+          act: 3,
+          q: q,
+          actLabel: "第三幕 · 终极修罗场",
+          actColor: "#E5484D",
+          scene: "🔥 伦理抉择 · " + q.dim,
+          saved: state.answers.act3[idx] || null
+        };
+      }
+    }
+
+    function renderQuizQuestion() {
+      const info = getCurrentQuestionObj();
+      const idx = state.qIndex;
+
+      const actPill = document.getElementById("quiz-act-pill");
+      actPill.textContent = info.actLabel;
+      actPill.style.background = info.actColor;
+
+      document.getElementById("quiz-counter").textContent =
+        String(idx + 1).padStart(2, "0") + " / 24";
+
+      const fill = document.getElementById("quiz-progress-fill");
+      fill.style.width = `${Math.round(((idx + 1) / 24) * 100)}%`;
+      fill.style.background = info.actColor;
+
+      const qBox = document.getElementById("quiz-question-box");
+      if (info.act === 3) qBox.classList.add("inferno-q");
+      else qBox.classList.remove("inferno-q");
+
+      document.getElementById("quiz-scene-tag").textContent = info.scene;
+      document.getElementById("quiz-question-text").textContent = info.q.q;
+
+      const area = document.getElementById("quiz-answer-area");
+
+      if (info.act === 1 || info.act === 2) {
+        // MBTI 5-point Likert UI
+        const colsHTML = LIKERT_CHOICES.map(ch => {
+          const isSel = info.saved === ch.val;
+          return `
+            <div class="likert-col">
+              <button type="button" class="likert-dot ${ch.cls} ${isSel ? "selected" : ""}" data-val="${ch.val}">${ch.symbol}</button>
+              <span class="likert-sublabel">${ch.short}</span>
+            </div>
+          `;
+        }).join("");
+
+        area.innerHTML = `
+          <div class="likert-wrap">
+            <div class="likert-ends">
+              <span class="likert-end-left">← 非常不符合</span>
+              <span class="likert-end-right">非常符合 →</span>
+            </div>
+            <div class="likert-row">${colsHTML}</div>
+            <div class="likert-hint">凭第一直觉点选符合程度，选中间「说不清」不偏不倚</div>
+          </div>
+        `;
+
+        area.querySelectorAll(".likert-dot").forEach(btn => {
+          btn.addEventListener("click", () => handleSelectLikert(btn, info));
+        });
+      } else {
+        // Act 3: 4-choice Ethics Dilemma + dashed Escape E
+        const shuffleKey = `3_${info.q.id}`;
+        const order = getShuffleOrder(shuffleKey);
+        const letters = ["A", "B", "C", "D"];
+
+        const htmlParts = order.map((origIdx, dispIdx) => {
+          const opt = info.q.opts[origIdx];
+          const isSelected = !!(info.saved && !info.saved.isEscape && info.saved.score === opt.score);
+          return `
+            <button type="button" class="opt-btn ${isSelected ? "selected" : ""}" data-orig="${origIdx}">
+              <span class="opt-key">${letters[dispIdx]}</span>
+              <span>${opt.t}</span>
+            </button>
+          `;
+        });
+
+        const escSelected = !!(info.saved && info.saved.isEscape);
+        htmlParts.push(`
+          <button type="button" class="opt-btn opt-escape ${escSelected ? "selected" : ""}" data-escape="1">
+            <span class="opt-key">E</span>
+            <span>不知道啊，好难选</span>
+          </button>
+        `);
+
+        area.innerHTML = `<div class="options-list">${htmlParts.join("")}</div>`;
+        area.querySelectorAll(".opt-btn").forEach(btn => {
+          btn.addEventListener("click", () => handleSelectAct3(btn, info));
+        });
+      }
+
+      document.getElementById("btn-prev").disabled = (idx === 0);
+    }
+
+    let selectLock = false;
+    function handleSelectLikert(btn, info) {
+      if (selectLock) return;
+      selectLock = true;
+
+      const idx = state.qIndex;
+      const val = Number(btn.dataset.val);
+
+      document.querySelectorAll(".likert-dot").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+
+      if (info.act === 1) {
+        const prevBranch = state.branchFam;
+        state.answers.act1[idx] = val;
+        // 跨幕回退保护：若修改第一幕导致主大类变化，必须清空第二幕已答记录
+        if (Object.keys(state.answers.act2).length > 0) {
+          const newWinner = computeAct1Result().winner;
+          if (newWinner !== prevBranch) {
+            state.branchFam = newWinner;
+            state.answers.act2 = {};
+          }
+        }
+      } else {
+        state.answers.act2[idx] = val;
+      }
+
+      setTimeout(() => {
+        selectLock = false;
+        advanceAfterAnswer();
+      }, 150);
+    }
+
+    function handleSelectAct3(btn, info) {
+      if (selectLock) return;
+      selectLock = true;
+
+      const idx = state.qIndex;
+      const isEscape = btn.dataset.escape === "1";
+
+      document.querySelectorAll(".opt-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+
+      if (isEscape) {
+        state.answers.act3[idx] = { isEscape: true };
+      } else {
+        const opt = info.q.opts[Number(btn.dataset.orig)];
+        state.answers.act3[idx] = { isEscape: false, score: opt.score };
+      }
+
+      setTimeout(() => {
+        selectLock = false;
+        advanceAfterAnswer();
+      }, 160);
+    }
+
+    function advanceAfterAnswer() {
+      if (state.qIndex === 9) {
+        const act1 = computeAct1Result();
+        if (act1.winner !== state.branchFam) {
+          state.branchFam = act1.winner;
+          state.answers.act2 = {};
+        }
+        trackEvent("ev_act1_done", { branch: state.branchFam });
+        renderTransition("ACT1_TO_2", act1);
+        showView("TRANSITION");
+      } else if (state.qIndex === 17) {
+        trackEvent("ev_act2_done", { branch: state.branchFam });
+        renderTransition("ACT2_TO_3");
+        showView("TRANSITION");
+      } else if (state.qIndex === 23) {
+        const res = computeFinalResult();
+        state.lastResult = res;
+        trackEvent("ev_finish", {
+          easterEgg: res.isEasterEgg,
+          type: res.isEasterEgg ? "EASTER_EGG" : res.mainTypeId,
+          toxicity: res.toxicity.code
+        });
+        renderResult(res);
+        showView("RESULT");
+      } else {
+        state.qIndex += 1;
+        renderQuizQuestion();
+      }
+    }
+
+    function renderFamBarsHTML(pcts) {
+      return FAM_ORDER.map(fam => {
+        const f = FAMS[fam];
+        const p = pcts[fam];
+        return `
+          <div class="mini-bar-row">
+            <span class="mini-bar-label">${f.name}</span>
+            <div class="mini-bar-track">
+              <div class="mini-bar-fill" style="width:${p}%;background:${f.color};"></div>
+            </div>
+            <span class="mini-bar-pct">${p}%</span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderTraitBarsHTML(traits, color) {
+      return traits.map(tr => {
+        const rightPct = 100 - tr.leftPct;
+        return `
+          <div class="trait-row">
+            <div class="trait-labels">
+              <span>${tr.left} ${tr.leftPct}%</span>
+              <span>${rightPct}% ${tr.right}</span>
+            </div>
+            <div class="trait-track">
+              <div class="trait-fill" style="width:${tr.leftPct}%;background:${color};"></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderTransition(type, act1Data) {
+      state.pendingTransition = type;
+      const card = document.getElementById("trans-card");
+      const icon = document.getElementById("trans-icon");
+      const badge = document.getElementById("trans-badge");
+      const title = document.getElementById("trans-title");
+      const desc = document.getElementById("trans-desc");
+      const bars = document.getElementById("trans-bars");
+      const nextBtn = document.getElementById("btn-trans-next");
+
+      if (type === "ACT1_TO_2") {
+        const f = FAMS[state.branchFam];
+        card.classList.remove("inferno");
+        icon.textContent = "⚠️";
+        badge.textContent = "第一幕 · 日常潜伏期结束";
+        badge.style.background = f.color;
+        badge.style.color = "#FFFFFF";
+        title.textContent = `检测到高浓度【${f.name}】波动`;
+        desc.textContent = `正在切入专属审讯室：${f.room}…… 接下来 8 道精准量表题，继续测出你的深层亚型。`;
+        bars.style.display = "block";
+        bars.innerHTML = renderFamBarsHTML(act1Data.pcts);
+        nextBtn.textContent = `进入【${f.room}】→`;
+      } else {
+        card.classList.add("inferno");
+        icon.textContent = "🔥";
+        badge.textContent = "第二幕 · 专属审讯结束";
+        badge.style.background = "#FFDE59";
+        badge.style.color = "#111111";
+        title.textContent = "画风突变！进入【终极修罗场】";
+        desc.textContent = "前 18 题日常量表已锁定你的潜伏人格。接下来切换为 6 道高压情景四选一，测测你是嘴上口嗨还是纯血活阎王。";
+        bars.style.display = "none";
+        nextBtn.textContent = "接受底线拷问 →";
+      }
+    }
+
+    function getSubjectLabel() {
+      if (state.mode === "proxy") {
+        const name = state.proxyName.trim();
+        return name ? `代入对象：${name}` : "代入模式（帮 TA 鉴定）";
+      }
+      return "自黑模式（本人受检）";
+    }
+
+    function renderResult(res) {
+      document.getElementById("res-case-no").textContent = `病历号 NO.${state.caseNo} · ${getSubjectLabel()}`;
+
+      const stampEl = document.getElementById("res-tox-stamp");
+      const famTagEl = document.getElementById("res-fam-tag");
+      const avatarEl = document.getElementById("res-avatar");
+      const titleEl = document.getElementById("res-main-title");
+      const personaEl = document.getElementById("res-persona");
+      const verdictEl = document.getElementById("res-verdict");
+      const toxLineEl = document.getElementById("res-tox-line");
+      const symptomsEl = document.getElementById("res-symptoms");
+      const barsEl = document.getElementById("res-fam-bars");
+      const subRowEl = document.getElementById("res-sub-row");
+      const traitBarsEl = document.getElementById("res-trait-bars");
+
+      let profile, themeColor;
+      if (res.isEasterEgg) {
+        profile = EASTER_EGG;
+        themeColor = "#111111";
+        stampEl.style.display = "none";
+        famTagEl.textContent = "隐藏彩蛋触发";
+        famTagEl.style.background = "#111111";
+        titleEl.textContent = profile.name;
+        toxLineEl.style.display = "none";
+        subRowEl.style.display = "none";
+      } else {
+        profile = TYPES[res.mainTypeId];
+        const famInfo = FAMS[res.fam];
+        themeColor = famInfo.color;
+        stampEl.style.display = "inline-block";
+        stampEl.className = "toxicity-stamp " + res.toxicity.cls;
+        stampEl.textContent = res.toxicity.badge;
+        famTagEl.textContent = famInfo.name;
+        famTagEl.style.background = famInfo.color;
+        titleEl.textContent = formatFullTitle(famInfo.name, profile.name);
+        toxLineEl.style.display = "block";
+        toxLineEl.innerHTML = `<strong>☣️ 毒性评级（${res.toxScore}/18 分）：</strong>${res.toxicity.desc}`;
+
+        if (res.subTypeId) {
+          const subProfile = TYPES[res.subTypeId];
+          subRowEl.style.display = "flex";
+          subRowEl.innerHTML = `<span>隐藏副亚型</span><span style="color:${famInfo.color};">${subProfile.name}</span>`;
+        } else {
+          subRowEl.style.display = "none";
+        }
+      }
+
+      avatarEl.style.background = themeColor;
+      avatarEl.innerHTML = renderPixelSVG(profile.pixel, themeColor);
+      personaEl.textContent = profile.persona;
+      verdictEl.textContent = profile.verdict;
+      symptomsEl.innerHTML = profile.symptoms
+        .map((s, i) => `<li><span>0${i + 1}.</span><span>${s}</span></li>`)
+        .join("");
+
+      barsEl.innerHTML = renderFamBarsHTML(res.act1.pcts);
+      traitBarsEl.innerHTML = renderTraitBarsHTML(res.traits, themeColor);
+      document.getElementById("res-match-target").textContent = profile.match.target;
+      document.getElementById("res-match-desc").textContent = profile.match.desc;
+      document.getElementById("res-nemesis-target").textContent = profile.nemesis.target;
+      document.getElementById("res-nemesis-desc").textContent = profile.nemesis.desc;
+      document.getElementById("res-qr").innerHTML = renderQRSVG();
+    }
+
+    // =========================================================================
+    // 6. 原生 Canvas 2D 高清 9:16 诊断海报渲染器
+    // =========================================================================
+    function roundRectPath(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function drawStickerBox(ctx, x, y, w, h, r, fill, shadowOffset = 5, lineWidth = 4) {
+      if (shadowOffset > 0) {
+        ctx.fillStyle = "#111111";
+        roundRectPath(ctx, x + shadowOffset, y + shadowOffset, w, h, r);
+        ctx.fill();
+      }
+      ctx.fillStyle = fill;
+      roundRectPath(ctx, x, y, w, h, r);
+      ctx.fill();
+      ctx.strokeStyle = "#111111";
+      ctx.lineWidth = lineWidth;
+      ctx.stroke();
+    }
+
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+      let line = "";
+      let curY = y;
+      let linesDrawn = 0;
+      for (let i = 0; i < text.length; i++) {
+        const testLine = line + text[i];
+        if (ctx.measureText(testLine).width > maxWidth && line.length > 0) {
+          linesDrawn++;
+          if (maxLines && linesDrawn >= maxLines) {
+            ctx.fillText(line.slice(0, -1) + "…", x, curY);
+            return curY + lineHeight;
+          }
+          ctx.fillText(line, x, curY);
+          line = text[i];
+          curY += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      if (line) {
+        ctx.fillText(line, x, curY);
+        curY += lineHeight;
+      }
+      return curY;
+    }
+
+    function generatePosterPNG(res) {
+      const W = 720, H = 1280;
+      const canvas = document.createElement("canvas");
+      canvas.width = W;
+      canvas.height = H;
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = "#E5E7EB";
+      for (let py = 18; py < H; py += 26) {
+        for (let px = 18; px < W; px += 26) {
+          ctx.beginPath();
+          ctx.arc(px, py, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      const pad = 28;
+      drawStickerBox(ctx, pad, pad, W - pad * 2, H - pad * 2, 22, "#FFFFFF", 8, 5);
+
+      const ix = pad + 26;
+      const iw = W - (pad + 26) * 2;
+      let y = pad + 42;
+
+      const profile = res.isEasterEgg ? EASTER_EGG : TYPES[res.mainTypeId];
+      const famInfo = FAMS[res.fam];
+      const themeColor = res.isEasterEgg ? "#111111" : famInfo.color;
+
+      ctx.fillStyle = "#111111";
+      ctx.font = "900 24px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("当代人类迷惑行为鉴定报告", ix, y);
+      ctx.fillStyle = "#555555";
+      ctx.font = "700 18px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText(`病历号 NO.${state.caseNo} · ${getSubjectLabel()}`, ix, y + 30);
+
+      if (!res.isEasterEgg) {
+        ctx.save();
+        ctx.translate(W - pad - 125, y + 6);
+        ctx.rotate(0.09);
+        drawStickerBox(ctx, -108, -24, 216, 48, 10, res.toxicity.bg, 4, 3.5);
+        ctx.fillStyle = res.toxicity.fg;
+        ctx.font = "900 20px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(res.toxicity.badge, 0, 8);
+        ctx.restore();
+        ctx.textAlign = "left";
+      }
+
+      y += 50;
+      ctx.save();
+      ctx.setLineDash([8, 6]);
+      ctx.strokeStyle = "#111111";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(ix, y);
+      ctx.lineTo(ix + iw, y);
+      ctx.stroke();
+      ctx.restore();
+
+      y += 20;
+      const avSize = 140;
+      drawStickerBox(ctx, ix, y, avSize, avSize, 16, themeColor, 5, 4);
+      drawPixelOnCanvas(ctx, profile.pixel, themeColor, ix + 8, y + 8, avSize - 16);
+
+      const tx = ix + avSize + 22;
+      const tw = iw - avSize - 22;
+      const badgeLabel = res.isEasterEgg ? "隐藏彩蛋触发" : famInfo.name;
+      ctx.font = "900 18px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      const bw = ctx.measureText(badgeLabel).width + 24;
+      drawStickerBox(ctx, tx, y + 4, bw, 32, 8, themeColor, 0, 3);
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillText(badgeLabel, tx + 12, y + 26);
+
+      const fullTitle = res.isEasterEgg ? profile.name : formatFullTitle(famInfo.name, profile.name);
+      ctx.fillStyle = "#111111";
+      ctx.font = "900 28px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      const afterTitleY = wrapText(ctx, fullTitle, tx, y + 66, tw, 35, 2);
+      ctx.fillStyle = "#555555";
+      ctx.font = "700 19px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      wrapText(ctx, profile.persona, tx, afterTitleY + 4, tw, 26, 2);
+
+      y += avSize + 24;
+
+      ctx.save();
+      ctx.translate(ix + iw / 2, y + 52);
+      ctx.rotate(-0.015);
+      drawStickerBox(ctx, -iw / 2, -52, iw, 104, 12, "#FFF3B0", 5, 3.5);
+      ctx.fillStyle = "#78350F";
+      ctx.font = "900 16px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("📌 灵魂判词", -iw / 2 + 18, -22);
+      ctx.fillStyle = "#111111";
+      ctx.font = "900 23px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      wrapText(ctx, profile.verdict, -iw / 2 + 18, 10, iw - 36, 31, 2);
+      ctx.restore();
+
+      y += 120;
+
+      if (!res.isEasterEgg) {
+        drawStickerBox(ctx, ix, y, iw, 50, 10, "#F8FAFC", 0, 3);
+        ctx.fillStyle = "#111111";
+        ctx.font = "700 18px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        wrapText(ctx, `☣️ 毒性（${res.toxScore}/18）：${res.toxicity.desc}`, ix + 14, y + 32, iw - 28, 24, 1);
+        y += 66;
+      } else {
+        y += 10;
+      }
+
+      ctx.fillStyle = "#111111";
+      ctx.font = "900 20px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("🩺 典型发作症状", ix, y);
+      y += 12;
+      profile.symptoms.forEach((sym, i) => {
+        drawStickerBox(ctx, ix, y, iw, 44, 10, "#FAFAFA", 0, 2.5);
+        ctx.fillStyle = "#111111";
+        ctx.font = "700 18px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        ctx.fillText(`0${i + 1}.  ${sym}`, ix + 14, y + 29);
+        y += 52;
+      });
+
+      y += 8;
+      ctx.fillStyle = "#111111";
+      ctx.font = "900 20px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("📊 四大家族成分占比", ix, y);
+      y += 12;
+
+      const hasSub = !res.isEasterEgg && !!res.subTypeId;
+      const compH = hasSub ? 170 : 136;
+      drawStickerBox(ctx, ix, y, iw, compH, 12, "#FFFFFF", 0, 3);
+
+      let by = y + 29;
+      for (const fam of FAM_ORDER) {
+        const f = FAMS[fam];
+        const p = res.act1.pcts[fam];
+        ctx.fillStyle = "#111111";
+        ctx.font = "800 18px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        ctx.fillText(f.name, ix + 16, by);
+
+        const barX = ix + 128;
+        const barW = iw - 208;
+        ctx.fillStyle = "#E5E7EB";
+        roundRectPath(ctx, barX, by - 14, barW, 16, 8);
+        ctx.fill();
+        if (p > 0) {
+          ctx.fillStyle = f.color;
+          roundRectPath(ctx, barX, by - 14, Math.max(12, Math.round(barW * p / 100)), 16, 8);
+          ctx.fill();
+        }
+        ctx.strokeStyle = "#111111";
+        ctx.lineWidth = 2;
+        roundRectPath(ctx, barX, by - 14, barW, 16, 8);
+        ctx.stroke();
+
+        ctx.fillStyle = "#111111";
+        ctx.textAlign = "right";
+        ctx.fillText(p + "%", ix + iw - 16, by);
+        ctx.textAlign = "left";
+        by += 29;
+      }
+
+      if (hasSub) {
+        ctx.fillStyle = "#334155";
+        ctx.font = "800 17px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+        ctx.fillText(`隐藏副亚型：${TYPES[res.subTypeId].name}`, ix + 16, y + 154);
+      }
+
+      y += compH + 14;
+
+      const colW = (iw - 14) / 2;
+      const hookH = 126;
+      drawStickerBox(ctx, ix, y, colW, hookH, 12, "#FFFDF7", 0, 3);
+      ctx.fillStyle = "#111111";
+      ctx.font = "900 17px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("💘 你的绝配", ix + 14, y + 28);
+      ctx.font = "900 20px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText(profile.match.target, ix + 14, y + 56);
+      ctx.fillStyle = "#444444";
+      ctx.font = "600 16px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      wrapText(ctx, profile.match.desc, ix + 14, y + 84, colW - 28, 22, 2);
+
+      const rx = ix + colW + 14;
+      drawStickerBox(ctx, rx, y, colW, hookH, 12, "#FFF5F5", 0, 3);
+      ctx.fillStyle = "#111111";
+      ctx.font = "900 17px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("⚡ 唯一克星", rx + 14, y + 28);
+      ctx.font = "900 20px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText(profile.nemesis.target, rx + 14, y + 56);
+      ctx.fillStyle = "#444444";
+      ctx.font = "600 16px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      wrapText(ctx, profile.nemesis.desc, rx + 14, y + 84, colW - 28, 22, 2);
+
+      const fy = H - pad - 114;
+      ctx.save();
+      ctx.setLineDash([6, 6]);
+      ctx.strokeStyle = "#111111";
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(ix, fy - 14);
+      ctx.lineTo(ix + iw, fy - 14);
+      ctx.stroke();
+      ctx.restore();
+
+      const qrBoxSize = 84;
+      drawStickerBox(ctx, ix, fy, qrBoxSize, qrBoxSize, 8, "#FFFFFF", 0, 3);
+      const qUnit = (qrBoxSize - 12) / QR_GRID.length;
+      ctx.fillStyle = "#111111";
+      for (let gy = 0; gy < QR_GRID.length; gy++) {
+        for (let gx = 0; gx < QR_GRID.length; gx++) {
+          if (QR_GRID[gy][gx]) {
+            ctx.fillRect(
+              Math.floor(ix + 6 + gx * qUnit),
+              Math.floor(fy + 6 + gy * qUnit),
+              Math.ceil(qUnit),
+              Math.ceil(qUnit)
+            );
+          }
+        }
+      }
+
+      ctx.fillStyle = "#111111";
+      ctx.font = "800 19px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("扫码测测你是什么成分，或代入讨厌的人帮 TA 测", ix + qrBoxSize + 16, fy + 34);
+      ctx.fillStyle = "#777777";
+      ctx.font = "600 16px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("纯属虚构与娱乐自嘲，不骂人，别当真。", ix + qrBoxSize + 16, fy + 64);
+
+      return canvas.toDataURL("image/png");
+    }
+
+    function buildCopyText(res) {
+      if (res.isEasterEgg) {
+        return `【当代人类迷惑行为鉴定报告 NO.${state.caseNo}】\n鉴定结果：${EASTER_EGG.name}\n灵魂判词：“${EASTER_EGG.verdict}”\n绝配：${EASTER_EGG.match.target} | 克星：${EASTER_EGG.nemesis.target}\n（纯属虚构与娱乐自嘲，不骂人，别当真）`;
+      }
+      const p = TYPES[res.mainTypeId];
+      const f = FAMS[res.fam];
+      const fullTitle = formatFullTitle(f.name, p.name);
+      return `【当代人类迷惑行为鉴定报告 NO.${state.caseNo}】\n毒性评级：${res.toxicity.badge}（${res.toxScore}/18分）\n鉴定结果：${fullTitle}\n灵魂判词：“${p.verdict}”\n典型症状：${p.symptoms.join("；")}\n绝配：${p.match.target} | 克星：${p.nemesis.target}\n（纯属虚构与娱乐自嘲，不骂人，别当真）`;
+    }
+
+    function copyTextFallback(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          () => showToast("已复制毒舌报告，快去群里甩链接！"),
+          () => legacyCopy(text)
+        );
+      } else {
+        legacyCopy(text);
+      }
+    }
+
+    function legacyCopy(text) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast("已复制毒舌报告！");
+      } catch (e) {
+        showToast("复制失败，请手动截屏分享");
+      }
+      document.body.removeChild(ta);
+    }
+
+    // =========================================================================
+    // 7. 事件绑定
+    // =========================================================================
+    document.getElementById("btn-mode-self").addEventListener("click", () => {
+      state.mode = "self";
+      document.getElementById("btn-mode-self").classList.add("active");
+      document.getElementById("btn-mode-proxy").classList.remove("active");
+      document.getElementById("proxy-input-wrap").classList.remove("show");
+    });
+
+    document.getElementById("btn-mode-proxy").addEventListener("click", () => {
+      state.mode = "proxy";
+      document.getElementById("btn-mode-proxy").classList.add("active");
+      document.getElementById("btn-mode-self").classList.remove("active");
+      document.getElementById("proxy-input-wrap").classList.add("show");
+    });
+
+    document.getElementById("proxy-name-input").addEventListener("input", e => {
+      state.proxyName = e.target.value;
+    });
+
+    document.getElementById("btn-start").addEventListener("click", () => {
+      resetQuizState();
+      trackEvent("ev_start", { mode: state.mode });
+      renderQuizQuestion();
+      showView("QUIZ");
+    });
+
+    document.getElementById("btn-prev").addEventListener("click", () => {
+      if (state.qIndex > 0) {
+        state.qIndex -= 1;
+        renderQuizQuestion();
+      }
+    });
+
+    document.getElementById("btn-quit").addEventListener("click", () => {
+      showView("HOME");
+    });
+
+    document.getElementById("btn-trans-next").addEventListener("click", () => {
+      if (state.pendingTransition === "ACT1_TO_2") {
+        state.qIndex = 10;
+      } else if (state.pendingTransition === "ACT2_TO_3") {
+        state.qIndex = 18;
+      }
+      state.pendingTransition = null;
+      renderQuizQuestion();
+      showView("QUIZ");
+    });
+
+    document.getElementById("btn-save-poster").addEventListener("click", () => {
+      if (!state.lastResult) return;
+      trackEvent("ev_poster", { easterEgg: state.lastResult.isEasterEgg });
+      const dataUrl = generatePosterPNG(state.lastResult);
+      state.lastPosterDataUrl = dataUrl;
+      document.getElementById("poster-img-output").src = dataUrl;
+      document.getElementById("view-poster-modal").classList.add("open");
+    });
+
+    document.getElementById("btn-download-png").addEventListener("click", () => {
+      if (!state.lastPosterDataUrl) return;
+      const a = document.createElement("a");
+      a.href = state.lastPosterDataUrl;
+      a.download = `迷惑行为鉴定报告_NO${state.caseNo}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast("正在保存 9:16 鉴定海报…");
+    });
+
+    document.getElementById("btn-close-modal").addEventListener("click", () => {
+      document.getElementById("view-poster-modal").classList.remove("open");
+    });
+
+    document.getElementById("view-poster-modal").addEventListener("click", e => {
+      if (e.target.id === "view-poster-modal") {
+        document.getElementById("view-poster-modal").classList.remove("open");
+      }
+    });
+
+    document.getElementById("btn-copy-text").addEventListener("click", () => {
+      if (!state.lastResult) return;
+      copyTextFallback(buildCopyText(state.lastResult));
+    });
+
+    document.getElementById("btn-retry").addEventListener("click", () => {
+      resetQuizState();
+      showView("HOME");
+    });
+
+    renderHome();
+  </script>
+</body>
+</html>
