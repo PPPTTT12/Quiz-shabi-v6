@@ -1,1 +1,0 @@
-# Quiz-shabi-v6
